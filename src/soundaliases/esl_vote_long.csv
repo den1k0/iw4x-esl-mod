@@ -1,0 +1,2 @@
+name,sequence,file,vol_min,vol_max,pitch_min,pitch_max,dist_min,dist_max,channel,type,probability,loop,masterslave,loadspec,subtitle,compression,secondaryaliasname,chainaliasname,mixergroup,volumefalloffcurve,startdelay,speakermap,reverb,lfe percentage,center percentage,platform,envelop_min,envelop_max,envelop percentage,velocity_min
+esl_vote_long,0,esl/voting_long.wav,0.85,0.85,1,1,5e+05,2500000,13,loaded,1,nonlooping,,,,,,,,",$default",0,,,0,0,,0,0,0,0

@@ -1,0 +1,136 @@
+#include "ui/menudef.h"
+#include "ui_mp/main.inc"
+
+#define MENU_NAME "kickplayer"
+#define MENU_TITLE "@MPUI_CALLVOTE"
+#define MENU_SECTION_TITLE ""
+
+// ESL-MOD fork of IW4x's own ui_mp/scriptmenus/kickplayer.menu, imported with
+// tools\dev\import_vote_menus.ps1.  IW4x ships the voting UI as a rawfile and a mod
+// overrides a rawfile by carrying the same path, so this copy is what the game loads
+// while ESL-MOD is active.
+//
+// The only change is the sound: every action below that actually issues a vote plays
+// the "esl_vote" alias (src\soundaliases\esl_vote.csv, sound\esl\voting_short.wav),
+// once per press, so calling a vote is audible.
+//
+// Votes reached from here: map_restart, map_rotate, voteKick (the player list box).
+// See docs\VOTING.md.
+
+#undef CHOICE_GROUP
+#define CHOICE_GROUP MENU_NAME
+
+{
+	menuDef 
+	{
+		name MENU_NAME
+		rect 0 0 640 480
+		foreColor CHOICE_TEXTCOLOR
+		focusColor CHOICE_TEXTCOLOR
+		blurWorld 7
+		onEsc 
+		{
+			close "self";
+			open "class";
+		}
+
+		#define BACKGROUND_PC_OPTIONS
+		#define BACKGROUND_IW4
+		#define SIDEBAR_RIGHT
+		#include "ui_mp/bg.inc"
+
+		itemDef
+		{
+			rect 0 0 272 28 1 1
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			textfont 9
+			textalign 6
+			textalignx -60
+			textscale 0.5
+			text MENU_TITLE
+		}
+
+		#define CHOICE_Y(i)					(28 + (i * 20))
+		#define CHOICE_ORIGIN(i)			-64 CHOICE_Y(i)
+		#define CHOICE_RECT(i)				CHOICE_ORIGIN(i) 336 20 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+
+		#define HR_ORIGIN(i)				0 (CHOICE_Y(i) - 0.5)
+		#define HR_RECT(i)					HR_ORIGIN(i) 216 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+
+		MENU_CHOICE_BUTTON_VIS(0, "button_1", "@MP_VOTE_MAPRESTART", play "esl_vote"; exec "cmd callvote map_restart"; close self;, ;, 1)
+		MENU_CHOICE_BUTTON_VIS(1, "button_2", "@MP_VOTE_NEXTMAP", play "esl_vote"; exec "cmd callvote map_rotate"; close self;, ;, 1)
+		MENU_CHOICE_BUTTON_VIS(2, "button_3", "@MPUI_KICK_PLAYER", open "kickplayer"; close "changemap"; close "changegametype"; close self;, ;, 1)
+
+		#undef CHOICE_Y
+		#undef CHOICE_ORIGIN
+		#undef CHOICE_RECT
+
+		#include "ui_mp/pc_options.inc"
+
+		PC_OPTIONS_SECTION_TITLE("@MPUI_KICK_PLAYER")
+
+		ITEM_BUTTON_BACK(close "self")
+
+		itemDef 
+		{
+			name "maplist"
+			visible 1
+			rect 275 42 300 270 1 1
+			forecolor 1 1 1 1
+			style 1
+			type ITEM_TYPE_LISTBOX
+			textscale 0.375
+			textfont 3
+			elementtype LISTBOX_TEXT
+			elementwidth 120
+			elementheight 24
+			textalignx 6
+			border 1
+			bordersize 1
+			bordercolor 1 1 1 0.15
+			outlinecolor 1 1 1 0.2
+			feeder FEEDER_PLAYER_LIST
+			columns 1 2 190 25 0
+			mouseEnter 
+			{
+				setitemcolor "maplist";
+				bordercolor 1 1 1 0.55;
+			}
+			mouseExit 
+			{
+				setitemcolor "maplist";
+				bordercolor 1 1 1 0.15;
+			}
+		}
+		itemDef
+		{
+			rect 275 312 320 20 1 1
+			style 1
+			forecolor 1 1 1 1
+			background "menu_setting_selection_bar"
+			type 1
+			textfont 3
+			textalign 6
+			textalignx -55
+			textscale 0.375
+			text "@MPUI_CALL_VOTE"
+			visible 1
+			onFocus
+			{
+				play "mouse_over";
+				setItemColor self backcolor 0 0 0 1;
+			}
+			leaveFocus
+			{
+				setItemColor self backcolor 0 0 0 0;
+			}
+			action
+			{
+				close "self";
+				play "esl_vote"; uiScript "voteKick";
+			}
+		}
+	}
+}

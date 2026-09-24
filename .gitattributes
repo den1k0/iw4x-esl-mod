@@ -1,0 +1,4 @@
+# The working tree is the build input, not a checkout of something else: the GSC,
+# weapon, menu and .cfg files are parsed by the game, and the generated sheet is
+# written with LF on purpose.  Do not let Git rewrite line endings anywhere.
+* -text

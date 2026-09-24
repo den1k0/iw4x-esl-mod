@@ -1,0 +1,68 @@
+#include "ui/menudef.h"
+#include "ui_mp/main.inc"
+
+#define MENU_NAME "callvote"
+#define MENU_TITLE "@MPUI_CALLVOTE"
+#define MENU_SECTION_TITLE ""
+
+// ESL-MOD fork of IW4x's own ui_mp/scriptmenus/callvote.menu, imported with
+// tools\dev\import_vote_menus.ps1.  IW4x ships the voting UI as a rawfile and a mod
+// overrides a rawfile by carrying the same path, so this copy is what the game loads
+// while ESL-MOD is active - it is the mod's only way into IW4x's voting.
+//
+// The only change is the sound.  Every action below that actually issues a vote plays
+// the "esl_vote" alias (src\soundaliases\esl_vote.csv, sound\esl\voting_short.wav),
+// once per press, so calling a vote is audible.  It is deliberately not an onOpen:
+// opening this menu and backing out is not a vote.
+//
+// Votes reached from here: map_restart, map_rotate.  See docs\VOTING.md.
+
+#undef CHOICE_GROUP
+#define CHOICE_GROUP MENU_NAME
+
+{
+	menuDef 
+	{
+		name MENU_NAME
+		rect 0 0 640 480
+		foreColor CHOICE_TEXTCOLOR
+		focusColor CHOICE_TEXTCOLOR
+		blurWorld 7
+		onEsc 
+		{
+			close "self";
+			open "class";
+		}
+
+		#define BACKGROUND_PC_OPTIONS
+		#define BACKGROUND_IW4
+		#define SIDEBAR_RIGHT
+		#include "ui_mp/bg.inc"
+
+		itemDef
+		{
+			rect 0 0 272 28 1 1
+			decoration
+			visible 1
+			forecolor 1 1 1 1
+			textfont 9
+			textalign 6
+			textalignx -60
+			textscale 0.5
+			text MENU_TITLE
+		}
+
+		#define CHOICE_Y(i)					(28 + (i * 20))
+		#define CHOICE_ORIGIN(i)			-64 CHOICE_Y(i)
+		#define CHOICE_RECT(i)				CHOICE_ORIGIN(i) 336 20 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+
+		#define HR_ORIGIN(i)				0 (CHOICE_Y(i) - 0.5)
+		#define HR_RECT(i)					HR_ORIGIN(i) 216 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+
+		MENU_CHOICE_BUTTON_VIS(0, "button_1", "@MP_VOTE_MAPRESTART", play "esl_vote"; exec "cmd callvote map_restart"; close self;, ;, 1)
+		MENU_CHOICE_BUTTON_VIS(1, "button_2", "@MP_VOTE_NEXTMAP", play "esl_vote"; exec "cmd callvote map_rotate"; close self;, ;, 1)
+		MENU_CHOICE_BUTTON_VIS(2, "button_3", "@MPUI_KICK_PLAYER", open "kickplayer"; close "changemap"; close "changegametype"; close self;, ;, 1)
+
+		ITEM_BUTTON_BACK(close "self")
+	}
+}

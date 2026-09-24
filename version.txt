@@ -1,0 +1,8 @@
+# ESL-MOD version - the single source.
+#
+# tools\build.ps1 reads the first line that is not a comment and writes it into the
+# mod, and the mod is what puts it in the server name (sv_hostname) and in the boot
+# line of logs\games_mp.log.  So a release is: bump this line, run tools\install.cmd,
+# restart the server.  Nothing else has to change, and the build refuses a line that
+# is not N.N - an empty file would otherwise ship a server called "v".
+1.0

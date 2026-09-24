@@ -1,0 +1,353 @@
+# =============================================================================
+#  ESL weapon tweaks
+#
+#  The dvar values ESL owns, forced onto the bundled weapon rebalance
+#  (third_party\weapon_rebalance\weapons.iwd, see docs\WEAPONS.md).
+#
+#  tools\build.ps1 applies this list to the extracted payload (step 2c) and then
+#  verifies the result - in the payload and again inside the packed archive.
+#  Keeping the changes here instead of editing the weapon files means the
+#  rebalance can be re-imported at any time without losing them.
+#
+#  Format, one rule per line, '#' starts a comment:
+#
+#      <file pattern>|<dvar>[,<dvar>]|<value>[|<replace from>][|<keep>]
+#
+#  <file pattern>   wildcard over the file names in weapons\mp (no directory),
+#                   e.g. "cheytac*_mp" for every variant of the Intervention.
+#  <dvar>           one or more dvars, all set to <value>.  Every occurrence in
+#                   every matching file is set: a weapon file can hold more than
+#                   one variant, each with its own copy of the dvars.
+#  <replace from>   optional: the current values this rule converts.  Needed
+#                   whenever the source data is not uniform, which it usually
+#                   is not - the rebalance tends to reach only some of a
+#                   weapon's files.  Omitted = convert anything not kept.
+#  <keep>           optional: current values that are expected and deliberately
+#                   left alone.
+#
+#  A value that is neither <value>, <replace from> nor <keep>, and a rule that
+#  changes no file at all, both fail the build.  That is what keeps "the change
+#  only reached part of the family" from shipping silently.
+# =============================================================================
+
+# Intervention (cheytac) aim-down-sights times.
+#
+# The rebalance ships 0.3 s in on the weapon itself and 0.4 s on most attachment
+# variants, so taking an ACOG or extended mags made the weapon noticeably slower
+# to aim than the bare one.  ESL sets the whole family to 0.266 s.
+#
+# The out time is a flat 0.6 in the stock data, unrelated to the in time, and the
+# rebalance's 0.6 -> 0.45 only reached the bare weapon and the FMJ variant (its
+# changelog does not mention the field at all) - so extended mags, the variant
+# players actually take, still dropped out of the scope at 0.6.  ESL uses 1.5x
+# the in time for the whole family: 0.266 * 1.5 = 0.4.
+#
+# Both numbers are the sniper pair play-tested against the M40A3 rather than the
+# rebalance's own - see the M40A3 section at the end of this file, which is a
+# touch faster on purpose.
+cheytac*_mp|adsTransInTime|0.266|0.3,0.4
+cheytac*_mp|adsTransOutTime|0.4|0.45,0.6
+
+# ACR (masada) rate of fire: 705 rounds per minute.
+#
+# fireTime is the time between shots in seconds, so this is 60 / 705 = 0.0851 s.
+# The rebalance only reached two of the fifty masada files (0.08 s = 750 rpm)
+# while the other 47 kept the stock 0.076 s = 789 rpm, so the same gun behaved
+# differently per attachment.
+#
+# Kept: 0.33 s belongs to masada_shotgun_attach_mp, the *underbarrel shotgun*
+# weapon that lives in the same family of files.  It is not the rifle and keeps
+# its own rate.
+masada*_mp|fireTime|0.0851|0.076,0.08,0.080|0.33
+
+# -----------------------------------------------------------------------------
+#  SMG damage and penetration
+#
+#  The rebalance's changelog says "the weapon", but in the archive it reached only
+#  part of each family - the bare file and, depending on the weapon, the FMJ and the
+#  extended-mags variants.  The effect was that picking an attachment made the gun do
+#  LESS damage than the bare one: an ACOG on the MP5K gave 40 damage and small
+#  penetration instead of 45 and medium, and an ACOG on the UMP45 gave 35 minimum
+#  damage and large penetration instead of 30 and medium.
+#
+#  These rules carry the rebalance's documented value across the rest of the family.
+#  Files that already hold it are not changed - the build reports how many it did
+#  change, and fails if a value turns up that the rule does not know about.
+#
+#      MP5K    40 / small   ->  45 / medium    (the bare file and FMJ are right)
+#      UMP45   35 / large   ->  30 / medium    (damage 40 is right on all 36)
+#      UZI     30           ->  35             (the bare file and FMJ are right)
+#      P90     30           ->  35             (bare, FMJ and the xmags set are right)
+#
+#  The other two SMGs need nothing here: the Kriss was already uniform, and the
+#  AK-74u is the weapon ESL ships itself - see the sections below.
+# -----------------------------------------------------------------------------
+mp5k*_mp|damage|45|40
+mp5k*_mp|penetrateType|medium|small
+
+ump45*_mp|minDamage|30|35
+ump45*_mp|penetrateType|medium|large
+
+uzi*_mp|damage|35|30
+
+p90*_mp|damage|35|30
+
+# -----------------------------------------------------------------------------
+#  The assault rifles: ADS movement, penetration, F2000 recoil
+#
+#  The same partial-family shape as the SMGs above, in three more fields.  In each
+#  case the rebalance's change is on the bare file and its FMJ sibling - the two
+#  files its author edited - and missing from the other 47:
+#
+#    adsMoveSpeedScale   1.75 on ak47_mp and ak47_fmj_mp, 1 on the other 48 files of
+#                        every one of the nine rifles.  The ADS movement change is
+#                        x1.75 (0.38 -> 0.665), so taking any attachment at all put
+#                        the player back to stock movement while aiming
+#
+#    penetrateType       "medium -> large" on the AK-47, M16A4, FAMAS, SCAR-H and
+#                        TAR-21: large on the bare file, FMJ and (on the AK, where
+#                        the holographic sight always gave it) the seven eotech
+#                        variants, medium on the other 39-47
+#
+#    F2000 recoil        1600 view-kick centre speed on the bare file and FMJ against
+#                        1500 on the rest, and the 70 -> 65 pitch max on only three
+#                        files
+#
+#  Each of those values is uniform across the family, so one rule per family does it -
+#  with two notes on the movement scale:
+#
+#  *  the M40A3 starts with "m4" as well, so the M4 uses the "m4_mp" / "m4_*_mp" pair
+#     the head-multiplier rules below already use for it.  Only "m4_*_mp" is needed
+#     here: the bare file already carries 1.75, which is what the rebalance did.
+#
+#  *  the underbarrel shotgun attachment inside every one of these families keeps its
+#     own value normally, but not here: its adsMoveSpeedScale is 1, the very number
+#     being converted, so no keep column can tell the two apart and it moves with the
+#     rifle.  Nothing in a match can feel that - the attachment is banned by the
+#     ruleset (esl_attach_shotgun 0) - and "put it back" is not an option either: the
+#     build re-reads every file a rule changed from the archive and refuses a rule
+#     whose work a later one undid.
+#
+#  The F2000's centre speed is the one that is not uniform by design: every rifle
+#  family gives its scopes their own offsets from the plain value (-400 with an ACOG,
+#  -200 with thermal), so the +100 the rebalance made on the plain files is applied
+#  to all three groups rather than flattening them.
+# -----------------------------------------------------------------------------
+ak47*_mp|adsMoveSpeedScale|1.75|1
+m16*_mp|adsMoveSpeedScale|1.75|1
+m4_*_mp|adsMoveSpeedScale|1.75|1
+famas*_mp|adsMoveSpeedScale|1.75|1
+scar*_mp|adsMoveSpeedScale|1.75|1
+tavor*_mp|adsMoveSpeedScale|1.75|1
+fal*_mp|adsMoveSpeedScale|1.75|1
+masada*_mp|adsMoveSpeedScale|1.75|1
+fn2000*_mp|adsMoveSpeedScale|1.75|1
+
+ak47*_mp|penetrateType|large|medium|small
+m16*_mp|penetrateType|large|medium|small
+famas*_mp|penetrateType|large|medium|small
+scar*_mp|penetrateType|large|medium|small
+tavor*_mp|penetrateType|large|medium|small
+
+# order matters: the plain rule is the wide one and carries the scoped values in its
+# keep column, so it has to run first - the other way round it meets the 1200/1400 the
+# narrow rules just wrote and stops the build
+fn2000*_mp|adsViewKickCenterSpeed,hipViewKickCenterSpeed|1600|1500|1100,1300,1400
+fn2000*acog*_mp|adsViewKickCenterSpeed,hipViewKickCenterSpeed|1200|1100
+fn2000*thermal*_mp|adsViewKickCenterSpeed,hipViewKickCenterSpeed|1400|1300
+
+fn2000*_mp|adsViewKickPitchMax,hipViewKickPitchMax|65|70
+
+# -----------------------------------------------------------------------------
+#  Head damage multipliers
+#
+#  locHead and locHelmet are the per-hit-location damage multipliers and always
+#  move together.  Stock: 1.4 on rifles and pistols, 1.5 on the sniper rifles.
+#
+#  Every assault rifle family also contains one file that is not the rifle:
+#  <weapon>_shotgun_attach_mp defines the underbarrel shotgun weapon, whose value
+#  is 1.  It is listed as kept, so a whole family can be done in one rule without
+#  changing the attachment behind the ruleset's back (ESL bans that attachment
+#  anyway, but the file still should not drift).
+# -----------------------------------------------------------------------------
+
+# Assault rifles -> 1.6 (AK-47, M16A4, M4A1, FAMAS, SCAR-H, TAR-21, FAL, ACR,
+# F2000 - the nine the ESL class editor offers).
+#
+# The M4 needs two patterns.  "m4*_mp" also swallows the M40A3 - m4, then "0a3",
+# then "_mp" - which is a sniper and has to stay at 2; and the bare file has no
+# "_" after the m4, so "m4_*_mp" alone would miss it.  The build refused to guess
+# which is how this was found.
+ak47*_mp|locHead,locHelmet|1.6|1.4|1
+m16*_mp|locHead,locHelmet|1.6|1.4|1
+m4_mp|locHead,locHelmet|1.6|1.4|1
+m4_*_mp|locHead,locHelmet|1.6|1.4|1
+famas*_mp|locHead,locHelmet|1.6|1.4|1
+scar*_mp|locHead,locHelmet|1.6|1.4|1
+tavor*_mp|locHead,locHelmet|1.6|1.4|1
+fal*_mp|locHead,locHelmet|1.6|1.4|1
+masada*_mp|locHead,locHelmet|1.6|1.4|1
+fn2000*_mp|locHead,locHelmet|1.6|1.4|1
+
+# Sniper rifles -> 2 (Intervention, Barrett, WA2000, M21 EBR, and the M40A3).
+#
+# The M40A3 comes in two files and both are converted: the rebalance archive's bare
+# "m40a3" (a singleplayer-style leftover, 3) and the "m40a3_mp" the mod ships itself
+# so multiplayer has a weapon to load (ProMod's file, 4.5 - the highest head
+# multiplier in the game).  Whichever file the engine reads, the weapon is the same.
+# The rest of its hit locations are brought to the Intervention's values as well,
+# see "The M40A3" at the end of this file.
+barrett*_mp|locHead,locHelmet|2|1.5
+cheytac*_mp|locHead,locHelmet|2|1.5
+m21*_mp|locHead,locHelmet|2|1.5
+wa2000*_mp|locHead,locHelmet|2|1.5
+m40a3*|locHead,locHelmet|2|3,4.5
+
+# Intervention lower torso -> 1.5, the same as its upper torso.
+#
+# The stock sniper spread is 1.5 neck, 1.5 upper torso and 1.1 lower torso, which
+# makes a hit on the stomach worth less than the same hit two inches higher.  This
+# is the multiplier that decides a sniper duel: 70 damage at 1.5 is 105, so an
+# upper torso hit was already lethal through 100 health, and the Intervention's
+# lower torso now is too.
+#
+# Only the Intervention needs a rule here - the M40A3 has its own further down,
+# because its files start from 1 and 4.5 rather than from 1.1, and it is set to
+# 1.4 there rather than to the Intervention's 1.5: 98 damage, so a lower-torso hit
+# that the Intervention kills with is survivable against the M40A3.
+cheytac*_mp|locTorsoLower|1.5|1.1
+
+# Pistols -> 2.  The golden Desert Eagle is one of these files - its asset name is
+# "deserteaglegold", which starts with "deserteagle" - so it gets its own rule, and
+# that rule has to come FIRST: both of them convert the same 1.4, and a rule whose
+# work a later one undid is exactly what the build refuses to ship.
+#
+# The golden one is 3.33, i.e. 100 / 30: 50 x 3.33 is 166 up close and 30 x 3.33 is
+# 99.9 at the far end of the damage curve, which is the golden's whole point - a head
+# shot anywhere.  The .9 is worth knowing about if a long-range headshot is ever seen
+# to survive: 3.34 is the number that makes it 100.2 and unambiguous.
+deserteaglegold*_mp|locHead,locHelmet|3.33|1.4
+
+deserteagle*_mp|locHead,locHelmet|2|1.4|3.33
+coltanaconda*_mp|locHead,locHelmet|2|1.4
+
+# -----------------------------------------------------------------------------
+#  The AK-74u (SMG)
+#
+#  This is not a rebalance of a bundled weapon: the mod ships the weapon itself
+#  (src\weapons\extra\ak74u_mp, taken from ProMod, which is where the ESL class
+#  editor's "AK-74u" entry came from in the first place).  The rebalance archive
+#  has no ak74u file, so without it the editor offered a weapon the engine had
+#  nothing to give.
+#
+#  ProMod's file is kept as it is apart from three things ESL owns:
+#
+#    * the damage pair: the UMP45's 40 - 30 rather than ProMod's 50 - 5.
+#
+#    * the hit locations, because ProMod gave the SMG the *rifle* upper body -
+#      neck and upper torso at 1.4, lower torso at 1.2 - so a shot to the chest
+#      was worth more than the same shot to an arm.  ESL uses the spread the
+#      game's other SMGs have: 1.4 for head and helmet, 1 everywhere else.  The
+#      head pair already reads 1.4 in ProMod's file, so it needs no rule - a rule
+#      that changes nothing fails this build on purpose, see the file header.
+#
+#    * maxDamageRange, which ProMod's file carries as **1** - one inch.  The
+#      weapon did not deal its damage at any range at all: from 2.5 cm out it was
+#      already sliding down the curve towards minDamage, all the way to the 38 m
+#      the same file gives as minDamageRange.  ESL sets the 1000 (25 m) the other
+#      SMGs use, so the maximum damage is real up to 25 m and minDamage by 38 m -
+#      which is also what the stat sheet's Full/Min columns want to mean.
+#
+#  The file is not matched by any of the rules above.
+# -----------------------------------------------------------------------------
+ak74u_mp|damage|40|50
+ak74u_mp|minDamage|30|5
+
+ak74u_mp|locNeck|1|1.4
+ak74u_mp|locTorsoUpper|1|1.4
+ak74u_mp|locTorsoLower|1|1.2
+
+ak74u_mp|maxDamageRange|1000|1
+
+# -----------------------------------------------------------------------------
+#  The Kriss (SMG) - the ends of its damage curve
+#
+#  A silencer shortens the damage ranges - the game's own suppressor penalty, and
+#  the reason the reference sheet carries separate "Suppressor" range columns.  In
+#  this family it is two sets of files:
+#
+#      27 plain files      750 / 1000     19 m at full damage, 25 m at minDamage
+#       9 silencer files   500 / 750      13 m / 19 m
+#
+#  ESL moves both ends of both sets, and keeps the penalty between them:
+#
+#      plain     ->   900 / 1200          23 m / 30 m
+#      silenced  ->   650 / 900           17 m / 23 m
+#
+#  The plain rule carries 500 and 750 in its KEEP column because it is the wider
+#  pattern: it matches the silencer files too, and those are converted by the rule
+#  below.  Rule order matters here - the broad one has to leave them alone, or the
+#  narrow one would find nothing left to change and fail the build.
+# -----------------------------------------------------------------------------
+kriss*_mp|maxDamageRange|900|750|500
+kriss*_mp|minDamageRange|1200|1000|750
+
+kriss*silencer*_mp|maxDamageRange|650|500
+kriss*silencer*_mp|minDamageRange|900|750
+
+# -----------------------------------------------------------------------------
+#  The M40A3 (sniper)
+#
+#  Like the AK-74u this is not a rebalance of a bundled weapon: the mod ships
+#  src\weapons\extra\m40a3_mp (ProMod's file) so that multiplayer has a weapon to
+#  load at all.  The only m40a3 file the rebalance archive has is the bare "m40a3",
+#  the singleplayer-style leftover (damage 400, playerDamage 220) that multiplayer
+#  never reads - the engine looks up "<name>_mp".
+#
+#  Both files are brought to the Intervention, the other sniper the ESL class editor
+#  offers, so the choice is between two sniper rifles rather than between the
+#  Intervention and a one-shot-anywhere weapon: ProMod multiplies *every* hit
+#  location by 4.5, and 70 damage at 4.5 is 315, so a hit on an arm or a leg killed
+#  just as surely as a headshot.  The Intervention uses 2 head, 1.5 neck, 1.5 for
+#  both torso zones and 1 everywhere else; the rules below set the same, except for
+#  the lower torso, which stays just under it (1.4 against 1.5) - 98 damage, so the
+#  M40A3 is the one sniper that does not kill a stomach hit.
+#
+#  The two files do not start from the same numbers (the leftover is a "3 / 2 / 1"
+#  spread), so each rule lists what it converts from, in both of them.
+#
+#  The aim-down-sights times are the Intervention's pair moved a little faster:
+#  0.233 s in and 0.35 s out against its 0.266 / 0.4.  That is the one place the two
+#  rifles are told apart by feel rather than by damage.
+#
+#  Scope sway is a ProMod decision ESL does not keep.  ProMod leaves the aimed idle
+#  pair at zero (adsIdleAmount and adsIdleSpeed), so a scoped M40A3 holds perfectly
+#  still where the Intervention drifts.  ESL gives it a quarter of the Intervention's
+#  sway amount - 20 becomes 5 - at the Intervention's own speed, 1.5.  The scope
+#  drifts a quarter as far as the Intervention's, at exactly the same pace; a quarter
+#  of the speed as well (0.375) was tried first and read as a slow, sludgy drift
+#  rather than a smaller version of the Intervention's.
+#
+#  The adsSway* scales (max angle 2, lerp speed 6, pitch/yaw/horiz/vert 0) are already
+#  the Intervention's, so they need no rule.  The hip pair is left as ProMod has it:
+#  the sway* scales match the Intervention's apart from swayHorizScale on the leftover,
+#  and hipIdleAmount / hipIdleSpeed stay 30 / 1 against the Intervention's 15 / 5.
+#
+#  Left alone on purpose: the bolt cycle.  That is a rifle difference rather than the
+#  damage question this section answers - this file rechambers in 1 s with a 0.65 s
+#  bolt against the Intervention's 0.865 s, which makes the M40A3 the faster-cycling
+#  of the two and shows in the footer as 60 rpm against 69.
+# -----------------------------------------------------------------------------
+m40a3*|damage,minDamage|70|400
+m40a3*|playerDamage|30|220
+
+m40a3*|adsTransInTime|0.233|0.25,0.4
+m40a3*|adsTransOutTime|0.35|0.4,0.6
+
+m40a3*|adsIdleAmount|5|0,20
+m40a3*|adsIdleSpeed|1.5|0
+
+m40a3*|locNeck|1.5|2,4.5
+m40a3*|locTorsoUpper|1.5|2,4.5
+m40a3*|locTorsoLower|1.4|1,4.5
+m40a3*|locRightArmUpper,locLeftArmUpper,locRightLegUpper,locLeftLegUpper|1|4.5

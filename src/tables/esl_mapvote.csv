@@ -1,0 +1,11 @@
+#a0 map name,#b1 preview material,#c3 localised name
+mp_terminal,preview_mp_terminal,Terminal
+mp_nightshift,preview_mp_nightshift,Skidrow
+mp_boneyard,preview_mp_boneyard,Scrapyard
+mp_highrise,preview_mp_highrise,Highrise
+mp_subbase,preview_mp_subbase,Sub Base
+mp_afghan,preview_mp_afghan,Afghan
+mp_invasion,preview_mp_invasion,Invasion
+mp_checkpoint,preview_mp_checkpoint,Karachi
+mp_rundown,preview_mp_rundown,Rundown
+mp_quarry,preview_mp_quarry,Quarry

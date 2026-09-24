@@ -1,0 +1,85 @@
+Weapons:
+
+---
+
+Assault: 
+
+- All assault rifles have ADS movement speed increased from 0.38 to 0.665.
+
+FAMAS: Penetration power increased from "medium" to "large".
+SCAR-H: Penetration power increased from "medium" to "large".
+TAR-21: Penetration power increased from "medium" to "large".
+M16A4: Penetration power increased from "medium" to "large".
+ACR: Slightly decreased rate of fire from 789 to 750.
+F2000: Decreased recoil (centerspeed from 1500 to 1600, gunkick pitch max from 70 to 65).
+AK-47: Penetration power increased from "medium" to "large". No longer has increased penetration like FMJ with Holographic sight.
+
+---
+
+SMG:
+
+ump45: Minimum damage reduced from 35 to 30. Penetration power reduced from "large" to "medium". Mag size 32 -> 25.
+mp5: Maximum damage increased from 40 to 45. Penetration power increased from "small" to "medium".
+p90: Maximum damage increased from 30 to 35. No longer has 1.75 sprint duration with extended mags.
+uzi: Maximum damage increased from 30 to 35.
+
+---
+
+LMG:
+
+- All LMG's have ADS movement speed increased from 0.35 to 0.525.
+
+RPD: Slightly increased recoil (centerspeed from 1700 to 1600 (grip - 2000)).
+M240: With FMJ now HAS increased penetration (previously didn't).
+
+---
+
+Sniper:
+
+Intervention: Decreased ADS time from 400ms to 300ms. Decreased ADS idle amount from 60 to 20. 
+WA2000: With FMJ now HAS increased penetration (previously didn't).
+MK14 EBR: No longer has "neck" and "upper torso" damage multiplier (previously 1.1x, now 1x).
+
+---
+
+Pistol:
+
+Desert Eagle: Decreased recoil (centerspeed from 600 to 1200). Increased recoil while akimbo.
+Magnum: Increased recoil while akimbo.
+
+---
+
+Shotgun:
+
+SPAS-12: With FMJ now HAS increased penetration (previously didn't).
+
+---
+
+AutoPistol:
+
+tmp: Increased mag capacity from 15 to 25 (akimbo: 25 to 40). Increased starting ammo capacity from 45 to 75 (akimbo: 45 to 80).
+g18: Increased recoil while akimbo (same as pp2000 and tmp).
+M93R: Increased recoil while akimbo.
+---
+Launchers:
+
+AT4: Decreased maximum damage from 155 to 110. Increased Starting ammo from 1 to 2. Decreased minimum damage from 55 to 35.
+thumper: Decreased maximum damage from 155 to 110.
+RPG-7: Decreased maximum damage from 160 to 120. Decreased minimum damage from 60 to 40.
+
+-----
+
+Attachments:
+
+Grenade launcher: Decreased damage radius from 300 units to 200. Minimum damage decreased from 25 to 20.
+
+---
+
+Equipment:
+
+Stun: Reduced throw speed (same as flash now).
+Semtex: Reduced maximum damage from 200 to 150.
+Claymore: Reduced maximum damage from 200 to 150.
+
+---
+
