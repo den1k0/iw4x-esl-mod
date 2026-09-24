@@ -1,0 +1,50 @@
+Loaded zone "iw4x_patch_mp" (IW4)
+Loaded search path "D:\Games\iw4x\zone\russian"
+Loaded search path "D:\Games\iw4x\zone\patch"
+Loaded search path "D:\Games\iw4x\zone\dlc"
+Loaded search path "D:\Games\iw4x\zone\zonebuilder"
+Loaded search path "D:\Games\iw4x\main"
+Loaded IWD "D:\Games\iw4x\main\iw_00.iwd" with 3199 entries
+Loaded IWD "D:\Games\iw4x\main\iw_01.iwd" with 2836 entries
+Loaded IWD "D:\Games\iw4x\main\iw_02.iwd" with 2159 entries
+Loaded IWD "D:\Games\iw4x\main\iw_03.iwd" with 1784 entries
+Loaded IWD "D:\Games\iw4x\main\iw_04.iwd" with 1706 entries
+Loaded IWD "D:\Games\iw4x\main\iw_05.iwd" with 350 entries
+Loaded IWD "D:\Games\iw4x\main\iw_06.iwd" with 208 entries
+Loaded IWD "D:\Games\iw4x\main\iw_07.iwd" with 552 entries
+Loaded IWD "D:\Games\iw4x\main\iw_08.iwd" with 186 entries
+Loaded IWD "D:\Games\iw4x\main\iw_09.iwd" with 268 entries
+Loaded IWD "D:\Games\iw4x\main\localized_russian_iw00.iwd" with 36 entries
+Loaded IWD "D:\Games\iw4x\main\localized_russian_iw01.iwd" with 4603 entries
+Loaded IWD "D:\Games\iw4x\main\localized_russian_iw02.iwd" with 6152 entries
+Loaded IWD "D:\Games\iw4x\main\localized_russian_iw03.iwd" with 4268 entries
+Loaded IWD "D:\Games\iw4x\main\localized_russian_iw04.iwd" with 2281 entries
+Loaded search path "D:\Games\iw4x\iw4x"
+Loaded IWD "D:\Games\iw4x\iw4x\iw4x_00.iwd" with 1276 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw4x_01.iwd" with 137 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw4x_02.iwd" with 1 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw4x_03.iwd" with 742 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw4x_04.iwd" with 847 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw4x_05.iwd" with 4314 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc10_00.iwd" with 2410 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc3_00.iwd" with 1346 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc4_00.iwd" with 1184 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc4_01.iwd" with 270 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc5_00.iwd" with 1982 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc5_01.iwd" with 194 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc6_00.iwd" with 708 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc7_00.iwd" with 825 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc8_00.iwd" with 2068 entries
+Loaded IWD "D:\Games\iw4x\iw4x\iw_dlc9_00.iwd" with 938 entries
+Dumped rawfile "rumble/viewmodel_medium"
+Dumped rawfile "rumble/viewmodel_small"
+Dumped rawfile "rumble/viewmodel_large"
+Dumped rawfile "iw4x_patch_mp"
+Unloaded zone "iw4x_patch_mp"
+Unloaded search path "D:\Games\iw4x\zone\russian"
+Unloaded search path "D:\Games\iw4x\zone\patch"
+Unloaded search path "D:\Games\iw4x\zone\dlc"
+Unloaded search path "D:\Games\iw4x\zone\zonebuilder"
+Unloaded search path "D:\Games\iw4x\main"
+Unloaded search path "D:\Games\iw4x\iw4x"
+Finished with 0 warnings, 0 errors
