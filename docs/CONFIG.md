@@ -191,13 +191,13 @@ Even with the archive there is a window before the first round of every map. On 
 the stock script takes the `scr_game_playerwaittime` branch for it
 (`_gamelogic.gsc` sets `level.prematchPeriod` from it, then counts down
 `scr_game_matchstarttime` seconds); the `scr_game_graceperiod` next to it is the
-*console* branch of the same code and is inert here. ESL ships **20 s** plus a 5 s
-countdown:
+*console* branch of the same code and is inert here. ESL ships **25 s** plus a 10 s
+countdown — 35 s from map load to the first round, the stock 15 raised twice by 5:
 
 | dvar | example | meaning |
 |------|---------|---------|
-| `scr_game_playerwaittime` | `20` | wait before the first round of every map |
-| `scr_game_matchstarttime` | `5` | countdown at the end of that wait |
+| `scr_game_playerwaittime` | `25` | wait before the first round of every map |
+| `scr_game_matchstarttime` | `10` | countdown at the end of that wait |
 
 ## Weapons
 
