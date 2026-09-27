@@ -39,7 +39,9 @@ have to stay consistent with each other.
 Summarised from `third_party\weapon_rebalance\changelog.txt`.
 
 ### Assault rifles
-* All assault rifles: ADS movement speed `0.38` → `0.665`.
+* All assault rifles: ADS movement speed `0.38` → `0.665`. ESL carries the change
+  across the whole family, but at `0.57` (×1.5) rather than `0.665` (×1.75) — see
+  "ESL tweaks on top of the rebalance" below.
 * FAMAS, SCAR-H, TAR-21, M16A4, AK-47: penetration `medium` → `large`.
 * ACR: rate of fire `789` → `750`, but only on the bare weapon and the FMJ
   variant. ESL sets the whole family to `705` — see "ESL tweaks on top of the
@@ -49,7 +51,8 @@ Summarised from `third_party\weapon_rebalance\changelog.txt`.
 
 ### SMG
 * UMP45: minimum damage `35` → `30`, penetration `large` → `medium`, magazine
-  `32` → `25`.
+  `32` → `25`. ESL puts the magazine and the reserve back, on the whole family —
+  see "ESL tweaks on top of the rebalance" below.
 * MP5: maximum damage `40` → `45`, penetration `small` → `medium`.
 * P90: maximum damage `30` → `35`; no longer has the 1.75 sprint duration with
   extended mags.
@@ -144,10 +147,12 @@ Current list:
 | AK-74u (`ak74u_mp`, the file ESL ships itself) | `damage`, `minDamage` | `50`, `5` (ProMod's own values) | `40`, `30` — the UMP45's pair |
 | MP5K (`mp5k*_mp`, 36 files) | `damage`, `penetrateType` | `45` / `medium` on the bare weapon and the FMJ variant only; `40` / `small` on the other 34 — so an ACOG or a silencer made the gun *weaker* than the bare one | `45` / `medium` on all 36 |
 | UMP45 (`ump45*_mp`, 36 files) | `minDamage`, `penetrateType` | `30` / `medium` on the bare weapon, FMJ and silencer; `35` / `large` on the other 33 | `30` / `medium` on all 36 |
+| UMP45 ammunition (`ump45*_mp`, 36 files) | `clipSize`, `maxAmmo`, `startAmmo` | `25` / `150` / `75` on the bare weapon, FMJ and silencer, `35` / `150` / `75` on the extended-mags file, the stock `32` / `192` / `96` on the other 32 — so a player carrying a bare UMP had a smaller magazine than the same player with a red dot on it | `32` / `192` / `96` on all 36. The eight `xmags` files keep the attachment's `48`, and the four `akimbo` files keep the doubled reserve (`384` / `192`) |
 | UZI (`uzi*_mp`, 36 files) | `damage` | `35` on the bare weapon and FMJ only; `30` on the other 34 | `35` on all 36 |
 | P90 (`p90*_mp`, 36 files) | `damage` | `35` on the bare weapon, FMJ and the seven extended-mags variants; `30` on the other 25 | `35` on all 36 |
 | Kriss (`kriss*_mp`, 36 files: 27 plain, 9 silenced) | `maxDamageRange`, `minDamageRange` | `750` / `1000` on the plain files, `500` / `750` on the silenced ones — the game's own suppressor penalty | `900` / `1200` (23 m / 30 m) on the plain files, `650` / `900` (17 m / 23 m) silenced — the penalty kept between the two |
-| Assault rifles (`ak47`, `m16`, `m4`, `famas`, `scar`, `tavor`, `fal`, `masada`, `fn2000` — 50 files each) | `adsMoveSpeedScale` | `1.75` on the bare file and the FMJ variant only, `1` on the other 48 — the ADS movement buff (`0.38` → `0.665` is ×1.75) was gone as soon as any attachment was taken | `1.75` on all of them. The M4 uses the `m4_*_mp` pattern so it does not swallow the M40A3, which keeps `1` |
+| AK-74u (`ak74u_mp`, the file ESL ships itself) | `maxDamageRange`, `minDamageRange` | `1` / `1500` — ProMod's file, i.e. 2.5 cm of full damage and then a slide all the way to 38 m | `750` / `1000` (19 m / 25 m), the pair the other SMGs use |
+| Assault rifles (`ak47`, `m16`, `m4`, `famas`, `scar`, `tavor`, `fal`, `masada`, `fn2000` — 50 files each) | `adsMoveSpeedScale` | `1.75` on the bare file and the FMJ variant only, `1` on the other 48 — the ADS movement buff (`0.38` → `0.665` is ×1.75) was gone as soon as any attachment was taken | `1.5` on all of them, i.e. `0.38` → `0.57`: aiming still costs movement, less of it than the rebalance's ×1.75 did. The M4 uses the `m4_*_mp` pattern so it does not swallow the M40A3, which keeps `1` |
 | AK-47, M16A4, FAMAS, SCAR-H, TAR-21 | `penetrateType` | `large` on the bare file, FMJ and — on the AK, where the holographic sight always gave it — the seven `eotech` variants; `medium` on the other 39–47 | `large` on all of them, the underbarrel shotgun attachment stays `small` |
 | F2000 | `adsViewKickCenterSpeed`, `hipViewKickCenterSpeed` | `1600` on the bare file and FMJ against `1500` on the rest, and the scoped groups keep their own offsets | `1600` plain, `1400` thermal, `1200` ACOG — the +100 on all three groups |
 | F2000 | `adsViewKickPitchMax`, `hipViewKickPitchMax` | `70` on 47 files, `65` on three | `65` on all of them |
@@ -282,16 +287,17 @@ engine had nothing to give (picking the AK-74u handed out an M4).
   everything in that directory into the payload in step **2b2** — before the tweaks
   (2c) and before the stats table (2d), so both reach it. Every file in there must be a
   `WEAPONFILE`, or the build refuses it by name.
-* The **AK-74u** gets its damage pair, its hit locations and one range:
+* The **AK-74u** gets its damage pair, its hit locations and its two damage ranges:
   [`weapon-tweaks.txt`](../src/weapons/weapon-tweaks.txt:1) sets the pair to `40` / `30`
   (the UMP45's) instead of ProMod's `50` / `5`, brings the hit locations to the spread
   the game's other SMGs use (`1.4` head and helmet, `1` everywhere else — ProMod's file
   gave the *rifle* upper body: neck and upper torso `1.4`, lower torso `1.2`), and fixes
   `maxDamageRange`, which ProMod's file carried as **`1`**: one inch, so the weapon was
   sliding down the damage curve from 2.5 cm out instead of dealing its damage at range.
-  Elsewhere it is ProMod's file as it came — 30-round magazine, `0.078 s` between shots
-  (769 rpm), `minDamageRange` 38 m — because the ESL rules for assault rifles, snipers
-  and pistols deliberately do not cover SMGs.
+  ESL sets it to `750` and `minDamageRange` to `1000` — 19 m at full damage, `minDamage`
+  by 25 m — the pair the other SMGs use. Elsewhere it is ProMod's file as it came —
+  30-round magazine, `0.078 s` between shots (769 rpm) — because the ESL rules for
+  assault rifles, snipers and pistols deliberately do not cover SMGs.
 * The **M40A3** is shipped for the file name, not for the numbers: multiplayer loads
   `weapons/mp/<name>_mp` and the archive only has the bare `weapons/mp/m40a3`, a
   singleplayer-style leftover with `damage 400` that multiplayer never reads — which is
@@ -372,7 +378,7 @@ Current rows, for reference:
 | `ak47` | `40 - 30` | `1.6x` | `51 m` | `large` |
 | `masada` (ACR) | `30 - 20` | `1.6x` | `58 m` | `medium` |
 | `ump45` | `40 - 30` | `1.4x` | `22 m` | `medium` |
-| `ak74u` | `40 - 30` | `1.4x` | `38 m` | `medium` |
+| `ak74u` | `40 - 30` | `1.4x` | `25 m` | `medium` |
 | `cheytac` (Intervention) | `70 - 70` | `2x` | `127 m` | `large` |
 | `m40a3` (M40A3) | `70 - 70` | `2x` | `127 m` | `large` |
 | `deserteagle` | `50 - 30` | `2x` | `30 m` | `medium` |
@@ -540,4 +546,6 @@ Anything else that reads a weapon file has to do the same.
 * `tools\weapon-sheet.cmd` regenerates [`docs\weapon-stats.html`](weapon-stats.html) out
   of that payload. It refuses to write a sheet with fewer than 20 weapons in it, so a
   broken extraction cannot publish a half-empty one.
-* In game the quickest single tell is the **UMP45: magazine 25, not 32**.
+* In game the quickest single tell is the **UMP45: magazine 32, not 25** — the
+  rebalance lowers it and ESL puts it back — or the **AK-74u dealing 40 - 30**: the
+  archive ships no `ak74u` file at all, so that weapon only exists with the mod loaded.

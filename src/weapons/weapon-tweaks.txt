@@ -93,6 +93,39 @@ uzi*_mp|damage|35|30
 p90*_mp|damage|35|30
 
 # -----------------------------------------------------------------------------
+#  UMP45 magazine and reserve
+#
+#  The rebalance's changelog entry is "Mag size 32 -> 25", and that is what it did -
+#  to three files: ump45_mp, ump45_fmj_mp and ump45_silencer_mp, the bare gun and the
+#  two variants its author treated as the weapon.  The other 32 kept the stock
+#  32 / 192 / 96, so how many rounds the gun held depended on what was bolted to it:
+#  25 bare, 32 with a red dot.   Its own extended-mags file, ump45_xmags_mp, is the
+#  fourth edited file at 35 / 150 / 75 - the 25-round base's scaled reserve, which is
+#  *less* than the bare gun's 192.
+#
+#  ESL restores the stock pair across the family:
+#
+#      magazine     32
+#      max ammo     192
+#      start ammo   96
+#
+#  Two groups are deliberately left alone, because the game's own convention for them
+#  is a multiple of those numbers rather than the numbers themselves:
+#
+#      the eight xmags files   48 (32 + 16, the extended magazine)
+#      the four akimbo files   384 / 192 (two submachine guns in the class)
+#
+#  The extended-mags file has to be put back to 48 *before* the wide rule runs: it
+#  holds the rebalance's 35, a number the wide rule was not told about, and a rule
+#  that meets an unknown value stops the build on purpose.
+# -----------------------------------------------------------------------------
+ump45_xmags_mp|clipSize|48|35
+
+ump45*_mp|clipSize|32|25|48
+ump45*_mp|maxAmmo|192|150|384
+ump45*_mp|startAmmo|96|75|192
+
+# -----------------------------------------------------------------------------
 #  The assault rifles: ADS movement, penetration, F2000 recoil
 #
 #  The same partial-family shape as the SMGs above, in three more fields.  In each
@@ -102,7 +135,17 @@ p90*_mp|damage|35|30
 #    adsMoveSpeedScale   1.75 on ak47_mp and ak47_fmj_mp, 1 on the other 48 files of
 #                        every one of the nine rifles.  The ADS movement change is
 #                        x1.75 (0.38 -> 0.665), so taking any attachment at all put
-#                        the player back to stock movement while aiming
+#                        the player back to stock movement while aiming.  ESL carries
+#                        the change across the whole family, but at 1.5 rather than
+#                        1.75: 0.38 -> 0.57, so aiming still costs movement, only
+#                        less of it than the rebalance's own value did.
+#
+#                        Note the "from" column on the rules below: 1,1.75.  Writing
+#                        1.75 as the *target* meant the two files that already held it
+#                        needed no conversion at all, so the column held the stock 1
+#                        alone.  Going the other way that is not true any more - 1.75
+#                        is now a value to convert, and a rule that meets one it was
+#                        not told about stops the build, which is how this was caught
 #
 #    penetrateType       "medium -> large" on the AK-47, M16A4, FAMAS, SCAR-H and
 #                        TAR-21: large on the bare file, FMJ and (on the AK, where
@@ -117,8 +160,9 @@ p90*_mp|damage|35|30
 #  with two notes on the movement scale:
 #
 #  *  the M40A3 starts with "m4" as well, so the M4 uses the "m4_mp" / "m4_*_mp" pair
-#     the head-multiplier rules below already use for it.  Only "m4_*_mp" is needed
-#     here: the bare file already carries 1.75, which is what the rebalance did.
+#     the head-multiplier rules below already use for it.  Both patterns are needed
+#     here, where writing 1.75 needed only the second: the bare file is one of the two
+#     the rebalance put 1.75 on, so it is one of the two with something to convert.
 #
 #  *  the underbarrel shotgun attachment inside every one of these families keeps its
 #     own value normally, but not here: its adsMoveSpeedScale is 1, the very number
@@ -133,15 +177,16 @@ p90*_mp|damage|35|30
 #  -200 with thermal), so the +100 the rebalance made on the plain files is applied
 #  to all three groups rather than flattening them.
 # -----------------------------------------------------------------------------
-ak47*_mp|adsMoveSpeedScale|1.75|1
-m16*_mp|adsMoveSpeedScale|1.75|1
-m4_*_mp|adsMoveSpeedScale|1.75|1
-famas*_mp|adsMoveSpeedScale|1.75|1
-scar*_mp|adsMoveSpeedScale|1.75|1
-tavor*_mp|adsMoveSpeedScale|1.75|1
-fal*_mp|adsMoveSpeedScale|1.75|1
-masada*_mp|adsMoveSpeedScale|1.75|1
-fn2000*_mp|adsMoveSpeedScale|1.75|1
+ak47*_mp|adsMoveSpeedScale|1.5|1,1.75
+m16*_mp|adsMoveSpeedScale|1.5|1,1.75
+m4_mp|adsMoveSpeedScale|1.5|1.75
+m4_*_mp|adsMoveSpeedScale|1.5|1,1.75
+famas*_mp|adsMoveSpeedScale|1.5|1,1.75
+scar*_mp|adsMoveSpeedScale|1.5|1,1.75
+tavor*_mp|adsMoveSpeedScale|1.5|1,1.75
+fal*_mp|adsMoveSpeedScale|1.5|1,1.75
+masada*_mp|adsMoveSpeedScale|1.5|1,1.75
+fn2000*_mp|adsMoveSpeedScale|1.5|1,1.75
 
 ak47*_mp|penetrateType|large|medium|small
 m16*_mp|penetrateType|large|medium|small
@@ -251,12 +296,12 @@ coltanaconda*_mp|locHead,locHelmet|2|1.4
 #      head pair already reads 1.4 in ProMod's file, so it needs no rule - a rule
 #      that changes nothing fails this build on purpose, see the file header.
 #
-#    * maxDamageRange, which ProMod's file carries as **1** - one inch.  The
-#      weapon did not deal its damage at any range at all: from 2.5 cm out it was
-#      already sliding down the curve towards minDamage, all the way to the 38 m
-#      the same file gives as minDamageRange.  ESL sets the 1000 (25 m) the other
-#      SMGs use, so the maximum damage is real up to 25 m and minDamage by 38 m -
-#      which is also what the stat sheet's Full/Min columns want to mean.
+#    * its two damage ranges.  ProMod's file carries maxDamageRange as **1** - one
+#      inch - so the weapon did not deal its damage at a range at all: from 2.5 cm
+#      out it was already sliding down the curve, all the way to the 1500 (38 m)
+#      the same file gives as minDamageRange.  ESL sets the pair the other SMGs
+#      use, 750 / 1000: full damage out to 19 m, minDamage (30) by 25 m.  Those
+#      two numbers are what the stat sheet's Full and Min columns mean.
 #
 #  The file is not matched by any of the rules above.
 # -----------------------------------------------------------------------------
@@ -267,7 +312,8 @@ ak74u_mp|locNeck|1|1.4
 ak74u_mp|locTorsoUpper|1|1.4
 ak74u_mp|locTorsoLower|1|1.2
 
-ak74u_mp|maxDamageRange|1000|1
+ak74u_mp|maxDamageRange|750|1
+ak74u_mp|minDamageRange|1000|1500
 
 # -----------------------------------------------------------------------------
 #  The Kriss (SMG) - the ends of its damage curve
