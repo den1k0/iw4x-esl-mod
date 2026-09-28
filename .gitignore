@@ -15,3 +15,11 @@ Modern Warfare 2 Weapon Stats by Marvel4 - Google Диск_files/
 *.log
 demos/
 mods/
+
+# Python bytecode from the container helper (docker/rcon.py)
+__pycache__/
+*.pyc
+
+# The IW4x installation mounted into the container (docker-compose.yml maps
+# it to /game).  It is game data and is never committed.
+docker/game/

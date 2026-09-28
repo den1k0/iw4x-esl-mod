@@ -2,3 +2,9 @@
 # weapon, menu and .cfg files are parsed by the game, and the generated sheet is
 # written with LF on purpose.  Do not let Git rewrite line endings anywhere.
 * -text
+
+# The exception: the container scripts are run by Linux (bash, and the Python
+# interpreter inside the image), where a stray CR breaks them - so they are
+# pinned to LF even if they are checked out on Windows.
+/docker/*.sh  text eol=lf
+/docker/*.py  text eol=lf

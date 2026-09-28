@@ -1,0 +1,35 @@
+# =============================================================================
+#  Docker build context, repository root.
+#
+#  The image only needs the built mod, the shipped configs, the map-vote
+#  fastfile and the docker/ scripts, so everything else is excluded.  A small
+#  context keeps `docker build` fast and stops the game data, the unlinked
+#  reference material and the git history from being uploaded to the daemon.
+#
+#  The one thing that is NOT in the repository and has to exist: the built
+#  archive build/z_eslmod.iwd - produce it on the host with tools\build.cmd
+#  before building the image (see docker/README.md).
+# =============================================================================
+
+# ignore everything ...
+**
+
+# ... then allow only what the image copies.
+!docker
+!docker/**
+
+!config
+!config/**
+
+!third_party
+!third_party/sesh_server_v2
+!third_party/sesh_server_v2/mod.ff
+
+!build
+!build/z_eslmod.iwd
+
+# The folder the /game volume maps to (docker-compose.yml).  It holds the IW4x
+# installation, and "!docker/**" above would otherwise pull it into the context
+# and then into the image via "COPY docker/ ...".  This rule wins because it
+# comes last.
+docker/game

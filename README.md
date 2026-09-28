@@ -211,6 +211,7 @@ esl-mod/
 ├── config/                       example server configs (not packed)
 │   ├── ESL-MOD.cfg
 │   └── ESL-MOD_sd.cfg
+├── docker/                       Linux container: dedicated server under Wine
 ├── docs/
 │   ├── INSTALL.md
 │   ├── RULES.md

@@ -1,0 +1,50 @@
+# =============================================================================
+#  ESL-MOD -- IW4x dedicated server (Linux container)
+#
+#  Put your IW4x installation under docker/game/ - that is the folder the /game
+#  volume maps to - then, from the repository root:
+#
+#      docker compose -f docker/docker-compose.yml up -d --build
+#
+#  The mod must be built first with tools\build.cmd, which produces
+#  build\z_eslmod.iwd.  Full guide: docker/README.md.
+# =============================================================================
+
+services:
+  esl-mod:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: esl-mod-server:latest
+    container_name: esl-mod-server
+
+    restart: unless-stopped
+
+    # The class archive runs on the way out, so give the stop a moment.
+    stop_grace_period: 30s
+
+    ports:
+      # The game itself.
+      - "28960:28960/udp"
+      # IW4x serves its mod list and files over HTTP on the game port; without
+      # this a client that lacks the mod reports
+      # "Failed to download the mod list".
+      - "28960:28960/tcp"
+
+    environment:
+      NET_PORT: "28960"
+      FS_GAME: "mods/ESL-MOD"
+      SERVER_CFG: "configs/ESL-MOD_server.cfg"
+      USE_XVFB: "1"
+      # RCON_PASSWORD: "change-me"     # overrides the value in the server cfg
+      # MAP: "mp_terminal"             # start on one map instead of map_rotate
+      # EXTRA_ARGS: "+set sv_lan 1"    # any further +set / +exec arguments
+
+    volumes:
+      # A working IW4x install (iw4x.exe + the Modern Warfare 2 data).  It is
+      # written to (the mod is installed here, logs and the class archive are
+      # kept here), so mount it read-write.
+      - ./game:/game
+      # Optional: a config directory whose *.cfg files win over the image's.
+      # The generated ESL-MOD_classes.cfg is still kept from /game.
+      # - ../config:/config:ro

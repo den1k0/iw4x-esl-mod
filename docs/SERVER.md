@@ -443,3 +443,21 @@ HTTP server; `tools\publish-mod.cmd -Serve` stages and serves one. The list stil
 comes from the game server on TCP 28960, so that port has to be open either way,
 and the base url needs its own TCP port open too. Worth it only if you expect
 many new players at once.
+
+## Running as a Linux container
+
+The server also runs as a Linux Docker container. `iw4x.exe` is a 32-bit
+Windows binary, so the image runs it under Wine, with the same launch line as
+above:
+
+```bash
+docker compose -f docker/docker-compose.yml up -d
+```
+
+The image carries the mod (`build\z_eslmod.iwd`, built on the host with
+`tools\build.cmd`, plus `mod.ff` and the configs); the IW4x installation is
+mounted at `/game`. Both `28960/udp` and `28960/tcp` have to be published, for
+the same reasons as in *Giving the mod to players* below. Stopping the container
+saves the ESL class archive over rcon first, so classes survive a restart just
+like `tools\server.cmd stop`. The full guide — image contents, environment
+variables, rcon, logs and limits — is in [docker/README.md](../docker/README.md).
