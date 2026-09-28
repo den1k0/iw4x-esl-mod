@@ -34,6 +34,31 @@ so it can be run from anywhere, and it works from Git Bash or WSL on Windows as
 well — the two Windows-specific steps above are the only ones `tools\build.cmd`
 and a copy of the install replace.
 
+### One-shot install on the target machine
+
+[`docker/package.sh`](package.sh:1) turns everything into a single tarball — the
+image (via `docker save`), the installer and, optionally, your IW4x install:
+
+```bash
+tools\build.cmd                          # Windows: the mod must exist first
+bash docker/package.sh                   # -> build/esl-mod-server-<version>.tar.gz
+INCLUDE_GAME=1 bash docker/package.sh    # also pack ./docker/game into the bundle
+```
+
+On the target machine it is then one script:
+
+```bash
+tar xzf esl-mod-server-1.0.tar.gz
+cd esl-mod-server-1.0
+./install.sh                             # or: ./install.sh --game /path/to/iw4x
+```
+
+[`docker/install.sh`](install.sh:1) installs Docker if it is missing (from
+get.docker.com — skip with `--no-docker-install`), loads the image, finds the
+game folder and starts the container. With `INCLUDE_GAME=1` the bundle carries
+`game.tar.gz`, so `./install.sh` needs no `--game` at all. It is the only file
+the target machine has to run.
+
 The rest of this file explains each step, the environment variables and the
 limits.
 
