@@ -16,6 +16,29 @@ Warfare 2 data are copyrighted and are expected to be mounted at `/game`.
 
 ---
 
+## Quick start
+
+```bash
+tools\build.cmd                            # Windows: produces build\z_eslmod.iwd
+robocopy "D:\Games\iw4x" "docker\game" /E   # a copy of your IW4x install
+bash docker/run.sh up                       # build if needed, start, print the join line
+bash docker/run.sh logs -f                  # follow the container log
+bash docker/run.sh rcon map_rotate          # drive the server
+bash docker/run.sh down                     # stop - the class archive is saved
+```
+
+[`docker/run.sh`](run.sh:1) is the bash counterpart of
+[`tools/server.cmd`](../tools/server.cmd:1): `build`, `up`, `down`, `restart`,
+`status`, `logs`, `rcon`, `shell`. It locates the repository from its own path,
+so it can be run from anywhere, and it works from Git Bash or WSL on Windows as
+well — the two Windows-specific steps above are the only ones `tools\build.cmd`
+and a copy of the install replace.
+
+The rest of this file explains each step, the environment variables and the
+limits.
+
+---
+
 ## What is in the image
 
 | Path | Content |
@@ -23,7 +46,7 @@ Warfare 2 data are copyrighted and are expected to be mounted at `/game`.
 | `/opt/esl-mod/z_eslmod.iwd` | The packed mod. **Built on the host** ([`build/z_eslmod.iwd`]). |
 | `/opt/esl-mod/mod.ff` | The map-vote preview materials (`third_party\sesh_server_v2`, unmodified). |
 | `/opt/esl-mod/configs/` | `config/` — the server, rules and S&D configs. |
-| `/opt/esl-mod/docker/` | This folder's scripts (entrypoint, rcon helper). |
+| `/opt/esl-mod/docker/` | This folder's scripts (entrypoint, `run.sh`, rcon helper). |
 | `/game` | The IW4x installation, mounted at runtime. |
 | `/wine` | The prepared 32-bit Wine prefix. |
 

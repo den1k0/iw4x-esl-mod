@@ -451,8 +451,11 @@ Windows binary, so the image runs it under Wine, with the same launch line as
 above:
 
 ```bash
-docker compose -f docker/docker-compose.yml up -d
+bash docker/run.sh up            # or: docker compose -f docker/docker-compose.yml up -d
 ```
+
+[`docker/run.sh`](../docker/run.sh:1) is the bash counterpart of
+`tools\server.cmd` — `build`, `up`, `down`, `restart`, `status`, `logs`, `rcon`.
 
 The image carries the mod (`build\z_eslmod.iwd`, built on the host with
 `tools\build.cmd`, plus `mod.ff` and the configs); the IW4x installation is

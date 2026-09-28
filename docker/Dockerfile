@@ -77,7 +77,9 @@ COPY third_party/sesh_server_v2/mod.ff /opt/esl-mod/mod.ff
 COPY build/z_eslmod.iwd                /opt/esl-mod/z_eslmod.iwd
 COPY docker/                           /opt/esl-mod/docker/
 
-RUN chmod +x /opt/esl-mod/docker/entrypoint.sh /opt/esl-mod/docker/rcon.py \
+RUN chmod +x /opt/esl-mod/docker/entrypoint.sh \
+             /opt/esl-mod/docker/rcon.py \
+             /opt/esl-mod/docker/run.sh \
  && ln -sf /opt/esl-mod/docker/rcon.py /usr/local/bin/esl-rcon
 
 # The IW4x installation lives here at runtime (mount it).
