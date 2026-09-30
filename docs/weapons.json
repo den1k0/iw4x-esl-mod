@@ -1,0 +1,3032 @@
+{
+  "last_updated": "2026-09-30",
+  "mod": {
+    "name": "ESL-MOD",
+    "version": "1.0",
+    "game": "IW4x (Call of Duty: Modern Warfare 2, 2009)",
+    "ruleset": "competitive Search & Destroy - no perks, no killstreaks, no deathstreaks"
+  },
+  "source": {
+    "rebalance": "third_party/weapon_rebalance/weapons.iwd",
+    "esl_added_weapons": "src/weapons/extra (ak74u_mp, m40a3_mp)",
+    "esl_tweaks": "src/weapons/weapon-tweaks.txt",
+    "read_from": "the tweaked payload - the same numbers the match uses",
+    "generator": "tools/dev/export_weapon_json.py"
+  },
+  "units": {
+    "damage": "per-shot damage; min is the value at the end of the drop curve",
+    "range_meters": "distance in metres; 'full' is where max damage ends, 'min' where it reaches minDamage",
+    "fire_rate_rpm": "round(60 / max(fireTime, rechamberBoltTime, rechamberTime if > 0.2))",
+    "time_sec": "seconds",
+    "multipliers": "per-hit-location damage multiplier (missing limbs default to 1.0)",
+    "recoil_center_speed": "higher is less recoil (the engine divides the view kick by it)",
+    "ads_move_speed_scale": "multiplier on the movement speed while aiming",
+    "esl_changed": "{dvar: final value} for every parameter ESL set on that weapon"
+  },
+  "stats": {
+    "weapons": 65,
+    "playable_weapons": 52,
+    "weapon_files_in_archive": 1194,
+    "esl_tweak_rules": 72,
+    "esl_modified_weapons": 23
+  },
+  "weapons": [
+    {
+      "id": "masada",
+      "name": "ACR",
+      "file": "masada_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 20,
+        "range_full_meters": 46,
+        "range_min_meters": 58
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 705,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 40,
+        "pitch_max_hip": 40
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "fireTime": 0.0851,
+        "adsMoveSpeedScale": 1.5,
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "fireTime: 0.076 -> 0.0851",
+        "fireTime: 0.080 -> 0.0851",
+        "fireTime: 0.08 -> 0.0851",
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Slightly decreased rate of fire from 789 to 750."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 2.029,
+      "reload_empty_sec": 2.359,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "ak47",
+      "name": "AK-47",
+      "file": "ak47_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 706,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "penetrateType": "large",
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "penetrateType: medium -> large",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Penetration power increased from \"medium\" to \"large\". No longer has increased penetration like FMJ with Holographic sight."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 2.5,
+      "reload_empty_sec": 3.25,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "fn2000",
+      "name": "F2000",
+      "file": "fn2000_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 20,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 923,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 65,
+        "pitch_max_hip": 65
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "adsViewKickCenterSpeed": 1400,
+        "hipViewKickCenterSpeed": 1400,
+        "adsViewKickPitchMax": 65,
+        "hipViewKickPitchMax": 65,
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsViewKickCenterSpeed: 1500 -> 1600",
+        "hipViewKickCenterSpeed: 1500 -> 1600",
+        "adsViewKickCenterSpeed: 1100 -> 1200",
+        "hipViewKickCenterSpeed: 1100 -> 1200",
+        "adsViewKickCenterSpeed: 1300 -> 1400",
+        "hipViewKickCenterSpeed: 1300 -> 1400",
+        "adsViewKickPitchMax: 70 -> 65",
+        "hipViewKickPitchMax: 70 -> 65",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Decreased recoil (centerspeed from 1500 to 1600, gunkick pitch max from 70 to 65)."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 3,
+      "reload_empty_sec": 3.43,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "fal",
+      "name": "FAL",
+      "file": "fal_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 55,
+        "min": 35,
+        "range_full_meters": 25,
+        "range_min_meters": 38
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1400,
+        "center_speed_hip": 1400,
+        "pitch_max_ads": 70,
+        "pitch_max_hip": 70
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 20,
+      "reload_sec": 2.7,
+      "reload_empty_sec": 3.266,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "famas",
+      "name": "FAMAS",
+      "file": "famas_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "3-Round Burst",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 51,
+        "range_min_meters": 64
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 1017,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1200,
+        "center_speed_hip": 1200,
+        "pitch_max_ads": 50,
+        "pitch_max_hip": 50
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "penetrateType": "large",
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "penetrateType: medium -> large",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Penetration power increased from \"medium\" to \"large\"."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 2.759,
+      "reload_empty_sec": 3.299,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "m16",
+      "name": "M16A4",
+      "file": "m16_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "3-Round Burst",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 938,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "penetrateType": "large",
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "penetrateType: medium -> large",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Penetration power increased from \"medium\" to \"large\"."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 2.029,
+      "reload_empty_sec": 2.359,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "m4",
+      "name": "M4A1",
+      "file": "m4_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 20,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 857,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 50,
+        "pitch_max_hip": 50
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 30,
+      "reload_sec": 2.029,
+      "reload_empty_sec": 2.359,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "scar",
+      "name": "SCAR-H",
+      "file": "scar_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 645,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 55,
+        "pitch_max_hip": 55
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "penetrateType": "large",
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "penetrateType: medium -> large",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Penetration power increased from \"medium\" to \"large\"."
+      ],
+      "magazine_capacity": 20,
+      "reload_sec": 2.832,
+      "reload_empty_sec": 2.832,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "tavor",
+      "name": "TAR-21",
+      "file": "tavor_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.6,
+        "helmet": 1.6,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsMoveSpeedScale": 1.5,
+        "penetrateType": "large",
+        "locHead": 1.6,
+        "locHelmet": 1.6
+      },
+      "esl_change_log": [
+        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "penetrateType: medium -> large",
+        "locHead: 1.4 -> 1.6",
+        "locHelmet: 1.4 -> 1.6"
+      ],
+      "rebalance_notes": [
+        "Penetration power increased from \"medium\" to \"large\"."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 2.5,
+      "reload_empty_sec": 2.93,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.25,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "throwingknife",
+      "name": "Throwing Knife",
+      "file": "throwingknife_mp",
+      "category": "Equipment",
+      "weapon_class": "throwingknife",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 135,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 109,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "flash",
+      "name": "Flash Grenade",
+      "file": "flash_grenade_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 15,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 86,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 2,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "frag",
+      "name": "Frag Grenade",
+      "file": "frag_grenade_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 15,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 167,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "gl",
+      "name": "M203 (underbarrel)",
+      "file": "gl_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 135,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 200,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Decreased damage radius from 300 units to 200. Minimum damage decreased from 25 to 20."
+      ],
+      "magazine_capacity": 1,
+      "reload_sec": 2.599,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.5,
+      "ads_out_sec": 0.5,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "semtex",
+      "name": "Semtex",
+      "file": "semtex_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 15,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 167,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Reduced maximum damage from 200 to 150."
+      ],
+      "magazine_capacity": 1,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "smoke",
+      "name": "Smoke Grenade",
+      "file": "smoke_grenade_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 15,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 167,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "concussion",
+      "name": "Stun Grenade",
+      "file": "concussion_grenade_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 86,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Reduced throw speed (same as flash now)."
+      ],
+      "magazine_capacity": 2,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "deserteagle",
+      "name": "Desert Eagle",
+      "file": "deserteagle_mp",
+      "category": "Handgun",
+      "weapon_class": "pistol",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 50,
+        "min": 30,
+        "range_full_meters": 9,
+        "range_min_meters": 30
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1200,
+        "center_speed_hip": 1200,
+        "pitch_max_ads": 80,
+        "pitch_max_hip": 80
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 2,
+        "locHelmet": 2
+      },
+      "esl_change_log": [
+        "locHead: 1.4 -> 2",
+        "locHelmet: 1.4 -> 2"
+      ],
+      "rebalance_notes": [
+        "Decreased recoil (centerspeed from 600 to 1200). Increased recoil while akimbo."
+      ],
+      "magazine_capacity": 7,
+      "reload_sec": 1.96,
+      "reload_empty_sec": 2.099,
+      "ads_in_sec": 0.15,
+      "ads_out_sec": 0.15,
+      "ads_idle_amount": 28,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "deserteaglegold",
+      "name": "Golden Desert Eagle",
+      "file": "deserteaglegold_mp",
+      "category": "Handgun",
+      "weapon_class": "pistol",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 50,
+        "min": 30,
+        "range_full_meters": 9,
+        "range_min_meters": 30
+      },
+      "multipliers": {
+        "head": 3.33,
+        "helmet": 3.33,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1200,
+        "center_speed_hip": 1200,
+        "pitch_max_ads": 80,
+        "pitch_max_hip": 80
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 3.33,
+        "locHelmet": 3.33
+      },
+      "esl_change_log": [
+        "locHead: 1.4 -> 3.33",
+        "locHelmet: 1.4 -> 3.33"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 7,
+      "reload_sec": 1.96,
+      "reload_empty_sec": 2.099,
+      "ads_in_sec": 0.15,
+      "ads_out_sec": 0.15,
+      "ads_idle_amount": 28,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "beretta",
+      "name": "M9 (Beretta)",
+      "file": "beretta_mp",
+      "category": "Handgun",
+      "weapon_class": "pistol",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 40,
+        "min": 25,
+        "range_full_meters": 14,
+        "range_min_meters": 20
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 750,
+        "center_speed_hip": 750,
+        "pitch_max_ads": 45,
+        "pitch_max_hip": 45
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 15,
+      "reload_sec": 1.629,
+      "reload_empty_sec": 1.917,
+      "ads_in_sec": 0.1,
+      "ads_out_sec": 0.1,
+      "ads_idle_amount": 28,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "beretta393",
+      "name": "M93R (single)",
+      "file": "beretta393_mp",
+      "category": "Handgun",
+      "weapon_class": "pistol",
+      "playable": true,
+      "fire_type": "3-Round Burst",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 13,
+        "range_min_meters": 19
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 938,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 20,
+      "reload_sec": 1.759,
+      "reload_empty_sec": 1.929,
+      "ads_in_sec": 0.1,
+      "ads_out_sec": 0.1,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "coltanaconda",
+      "name": "Magnum .44",
+      "file": "coltanaconda_mp",
+      "category": "Handgun",
+      "weapon_class": "pistol",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 50,
+        "min": 35,
+        "range_full_meters": 13,
+        "range_min_meters": 32
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 80,
+        "pitch_max_hip": 80
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 2,
+        "locHelmet": 2
+      },
+      "esl_change_log": [
+        "locHead: 1.4 -> 2",
+        "locHelmet: 1.4 -> 2"
+      ],
+      "rebalance_notes": [
+        "Increased recoil while akimbo."
+      ],
+      "magazine_capacity": 6,
+      "reload_sec": 3,
+      "reload_empty_sec": 3,
+      "ads_in_sec": 0.15,
+      "ads_out_sec": 0.15,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "usp",
+      "name": "USP .45",
+      "file": "usp_mp",
+      "category": "Handgun",
+      "weapon_class": "pistol",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 40,
+        "min": 25,
+        "range_full_meters": 11,
+        "range_min_meters": 25
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 750,
+        "center_speed_hip": 750,
+        "pitch_max_ads": 45,
+        "pitch_max_hip": 45
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 12,
+      "reload_sec": 1.625,
+      "reload_empty_sec": 1.917,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 28,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "at4",
+      "name": "AT4",
+      "file": "at4_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 57,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": true,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Decreased maximum damage from 155 to 110. Increased Starting ammo from 1 to 2. Decreased minimum damage from 55 to 35."
+      ],
+      "magazine_capacity": 1,
+      "reload_sec": 3,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.5,
+      "ads_out_sec": 0.5,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "javelin",
+      "name": "Javelin",
+      "file": "javelin_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 57,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 3,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.8,
+      "ads_out_sec": 0.66,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "rpg",
+      "name": "RPG-7",
+      "file": "rpg_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 182,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": true,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Decreased maximum damage from 160 to 120. Decreased minimum damage from 60 to 40."
+      ],
+      "magazine_capacity": 1,
+      "reload_sec": 3.292,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.5,
+      "ads_out_sec": 0.5,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "stinger",
+      "name": "Stinger",
+      "file": "stinger_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 57,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 3,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.8,
+      "ads_out_sec": 0.66,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "aug",
+      "name": "AUG HBAR",
+      "file": "aug_mp",
+      "category": "Light Machine Gun",
+      "weapon_class": "mg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 40,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 690,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 42,
+      "reload_sec": 3.359,
+      "reload_empty_sec": 4,
+      "ads_in_sec": 0.349,
+      "ads_out_sec": 0.349,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "sa80",
+      "name": "L86 LSW",
+      "file": "sa80_mp",
+      "category": "Light Machine Gun",
+      "weapon_class": "mg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 40,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 800,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 65,
+        "pitch_max_hip": 65
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 100,
+      "reload_sec": 5,
+      "reload_empty_sec": 5,
+      "ads_in_sec": 0.349,
+      "ads_out_sec": 0.349,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "m240",
+      "name": "M240",
+      "file": "m240_mp",
+      "category": "Light Machine Gun",
+      "weapon_class": "mg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 30,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 938,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "With FMJ now HAS increased penetration (previously didn't)."
+      ],
+      "magazine_capacity": 100,
+      "reload_sec": 7.75,
+      "reload_empty_sec": 7.75,
+      "ads_in_sec": 0.349,
+      "ads_out_sec": 0.349,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "mg4",
+      "name": "MG4",
+      "file": "mg4_mp",
+      "category": "Light Machine Gun",
+      "weapon_class": "mg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 30,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 857,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 50,
+        "pitch_max_hip": 50
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 100,
+      "reload_sec": 9.699,
+      "reload_empty_sec": 9.699,
+      "ads_in_sec": 0.349,
+      "ads_out_sec": 0.349,
+      "ads_idle_amount": 5,
+      "ads_idle_speed": 5,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "rpd",
+      "name": "RPD",
+      "file": "rpd_mp",
+      "category": "Light Machine Gun",
+      "weapon_class": "mg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 40,
+        "range_full_meters": 38,
+        "range_min_meters": 51
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 706,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Slightly increased recoil (centerspeed from 1700 to 1600 (grip - 2000))."
+      ],
+      "magazine_capacity": 100,
+      "reload_sec": 9.699,
+      "reload_empty_sec": 9.699,
+      "ads_in_sec": 0.349,
+      "ads_out_sec": 0.349,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1.5
+    },
+    {
+      "id": "aa12",
+      "name": "AA-12",
+      "file": "aa12_mp",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 20,
+        "min": 15,
+        "range_full_meters": 8,
+        "range_min_meters": 13
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 400,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1100,
+        "center_speed_hip": 1100,
+        "pitch_max_ads": 75,
+        "pitch_max_hip": 75
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 8,
+      "reload_sec": 2.75,
+      "reload_empty_sec": 3.582,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "m1014",
+      "name": "M1014",
+      "file": "m1014_mp",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 40,
+        "min": 20,
+        "range_full_meters": 8,
+        "range_min_meters": 13
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 109,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 800,
+        "center_speed_hip": 800,
+        "pitch_max_ads": 100,
+        "pitch_max_hip": 100
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 4,
+      "reload_sec": 0.566,
+      "reload_empty_sec": 0.566,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "winchester1200",
+      "name": "Model 1887",
+      "file": "winchester1200",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 50,
+        "min": 15,
+        "range_full_meters": 7,
+        "range_min_meters": 20
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 128,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1000,
+        "center_speed_hip": 1000,
+        "pitch_max_ads": 100,
+        "pitch_max_hip": 100
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 7,
+      "reload_sec": 0.566,
+      "reload_empty_sec": 0.566,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "model1887",
+      "name": "Model 1887 (akimbo)",
+      "file": "model1887_mp",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 35,
+        "min": 20,
+        "range_full_meters": 5,
+        "range_min_meters": 15
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 60,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 400,
+        "center_speed_hip": 1000,
+        "pitch_max_ads": 65,
+        "pitch_max_hip": 100
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 7,
+      "reload_sec": 0.85,
+      "reload_empty_sec": 0.85,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "file": "ranger_mp",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Double Barrel",
+      "damage": {
+        "max": 75,
+        "min": 35,
+        "range_full_meters": 5,
+        "range_min_meters": 10
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 128,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 500,
+        "center_speed_hip": 1000,
+        "pitch_max_ads": 100,
+        "pitch_max_hip": 100
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 2,
+      "reload_sec": 2.529,
+      "reload_empty_sec": 2.529,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "spas12",
+      "name": "SPAS-12",
+      "file": "spas12_mp",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 40,
+        "min": 20,
+        "range_full_meters": 10,
+        "range_min_meters": 18
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 128,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1000,
+        "center_speed_hip": 1000,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 95
+      },
+      "is_meta": true,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "With FMJ now HAS increased penetration (previously didn't)."
+      ],
+      "magazine_capacity": 8,
+      "reload_sec": 0.666,
+      "reload_empty_sec": 0.666,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 15,
+      "ads_idle_speed": 5,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "striker",
+      "name": "Striker",
+      "file": "striker_mp",
+      "category": "Shotgun",
+      "weapon_class": "spread",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 25,
+        "min": 15,
+        "range_full_meters": 8,
+        "range_min_meters": 15
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 353,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1000,
+        "center_speed_hip": 1000,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 95
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 12,
+      "reload_sec": 0.666,
+      "reload_empty_sec": 0.666,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.8,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "barrett",
+      "name": "Barrett .50cal",
+      "file": "barrett_mp",
+      "category": "Sniper Rifle",
+      "weapon_class": "sniper",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 70,
+        "min": 70,
+        "range_full_meters": 102,
+        "range_min_meters": 127
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1.5,
+        "upper_torso": 1.5,
+        "lower_torso": 1.1
+      },
+      "fire_rate_rpm": 1200,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 1000,
+        "center_speed_hip": 1000,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 95
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 2,
+        "locHelmet": 2
+      },
+      "esl_change_log": [
+        "locHead: 1.5 -> 2",
+        "locHelmet: 1.5 -> 2"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 10,
+      "reload_sec": 3.917,
+      "reload_empty_sec": 4.25,
+      "ads_in_sec": 0.4,
+      "ads_out_sec": 0.6,
+      "ads_idle_amount": 40,
+      "ads_idle_speed": 1.5,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "cheytac",
+      "name": "Intervention",
+      "file": "cheytac_mp",
+      "category": "Sniper Rifle",
+      "weapon_class": "sniper",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 70,
+        "min": 70,
+        "range_full_meters": 102,
+        "range_min_meters": 127
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1.5,
+        "upper_torso": 1.5,
+        "lower_torso": 1.5
+      },
+      "fire_rate_rpm": 69,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 500,
+        "center_speed_hip": 500,
+        "pitch_max_ads": 85,
+        "pitch_max_hip": 100
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "adsTransInTime": 0.366,
+        "adsTransOutTime": 0.55,
+        "locHead": 2,
+        "locHelmet": 2,
+        "locTorsoLower": 1.5
+      },
+      "esl_change_log": [
+        "adsTransInTime: 0.4 -> 0.366",
+        "adsTransInTime: 0.3 -> 0.366",
+        "adsTransOutTime: 0.6 -> 0.55",
+        "adsTransOutTime: 0.45 -> 0.55",
+        "locHead: 1.5 -> 2",
+        "locHelmet: 1.5 -> 2",
+        "locTorsoLower: 1.1 -> 1.5"
+      ],
+      "rebalance_notes": [
+        "Decreased ADS time from 400ms to 300ms. Decreased ADS idle amount from 60 to 20."
+      ],
+      "magazine_capacity": 5,
+      "reload_sec": 2.267,
+      "reload_empty_sec": 3.867,
+      "ads_in_sec": 0.366,
+      "ads_out_sec": 0.55,
+      "ads_idle_amount": 20,
+      "ads_idle_speed": 1.5,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "m21",
+      "name": "M21 EBR",
+      "file": "m21_mp",
+      "category": "Sniper Rifle",
+      "weapon_class": "sniper",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 70,
+        "min": 70,
+        "range_full_meters": 102,
+        "range_min_meters": 127
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 60,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 750,
+        "center_speed_hip": 750,
+        "pitch_max_ads": 50,
+        "pitch_max_hip": 50
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 2,
+        "locHelmet": 2
+      },
+      "esl_change_log": [
+        "locHead: 1.5 -> 2",
+        "locHelmet: 1.5 -> 2"
+      ],
+      "rebalance_notes": [
+        "No longer has \"neck\" and \"upper torso\" damage multiplier (previously 1.1x, now 1x)."
+      ],
+      "magazine_capacity": 10,
+      "reload_sec": 2.67,
+      "reload_empty_sec": 3.5,
+      "ads_in_sec": 0.4,
+      "ads_out_sec": 0.6,
+      "ads_idle_amount": 40,
+      "ads_idle_speed": 1.5,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "m40a3",
+      "name": "M40A3",
+      "file": "m40a3_mp",
+      "category": "Sniper Rifle",
+      "weapon_class": "sniper",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 70,
+        "min": 70,
+        "range_full_meters": 102,
+        "range_min_meters": 127
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1.5,
+        "upper_torso": 1.5,
+        "lower_torso": 1.4
+      },
+      "fire_rate_rpm": 60,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 500,
+        "center_speed_hip": 500,
+        "pitch_max_ads": 65,
+        "pitch_max_hip": 100
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 2,
+        "locHelmet": 2,
+        "damage": 70,
+        "minDamage": 70,
+        "playerDamage": 30,
+        "adsTransInTime": 0.333,
+        "adsTransOutTime": 0.5,
+        "adsIdleAmount": 10,
+        "adsIdleSpeed": 1.5,
+        "locNeck": 1.5,
+        "locTorsoUpper": 1.5,
+        "locTorsoLower": 1.4,
+        "locRightArmUpper": 1,
+        "locLeftArmUpper": 1,
+        "locRightLegUpper": 1,
+        "locLeftLegUpper": 1
+      },
+      "esl_change_log": [
+        "locHead: 3 -> 2",
+        "locHelmet: 3 -> 2",
+        "locHead: 4.5 -> 2",
+        "locHelmet: 4.5 -> 2",
+        "damage: 400 -> 70",
+        "minDamage: 400 -> 70",
+        "playerDamage: 220 -> 30",
+        "adsTransInTime: 0.4 -> 0.333",
+        "adsTransInTime: 0.25 -> 0.333",
+        "adsTransOutTime: 0.6 -> 0.5",
+        "adsTransOutTime: 0.4 -> 0.5",
+        "adsIdleAmount: 20 -> 10",
+        "adsIdleAmount: 0 -> 10",
+        "adsIdleSpeed: 0 -> 1.5",
+        "locNeck: 2 -> 1.5",
+        "locNeck: 4.5 -> 1.5",
+        "locTorsoUpper: 2 -> 1.5",
+        "locTorsoUpper: 4.5 -> 1.5",
+        "locTorsoLower: 1 -> 1.4",
+        "locTorsoLower: 4.5 -> 1.4",
+        "locRightArmUpper: 4.5 -> 1",
+        "locLeftArmUpper: 4.5 -> 1",
+        "locRightLegUpper: 4.5 -> 1",
+        "locLeftLegUpper: 4.5 -> 1"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 5,
+      "reload_sec": 0.43333,
+      "reload_empty_sec": 0.15,
+      "ads_in_sec": 0.333,
+      "ads_out_sec": 0.5,
+      "ads_idle_amount": 10,
+      "ads_idle_speed": 1.5,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "wa2000",
+      "name": "WA2000",
+      "file": "wa2000_mp",
+      "category": "Sniper Rifle",
+      "weapon_class": "sniper",
+      "playable": true,
+      "fire_type": "Single Shot",
+      "damage": {
+        "max": 70,
+        "min": 70,
+        "range_full_meters": 102,
+        "range_min_meters": 127
+      },
+      "multipliers": {
+        "head": 2,
+        "helmet": 2,
+        "neck": 1.5,
+        "upper_torso": 1.5,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 1200,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 825,
+        "center_speed_hip": 825,
+        "pitch_max_ads": 65,
+        "pitch_max_hip": 65
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "locHead": 2,
+        "locHelmet": 2
+      },
+      "esl_change_log": [
+        "locHead: 1.5 -> 2",
+        "locHelmet: 1.5 -> 2"
+      ],
+      "rebalance_notes": [
+        "With FMJ now HAS increased penetration (previously didn't)."
+      ],
+      "magazine_capacity": 6,
+      "reload_sec": 3.299,
+      "reload_empty_sec": 3.9,
+      "ads_in_sec": 0.4,
+      "ads_out_sec": 0.6,
+      "ads_idle_amount": 40,
+      "ads_idle_speed": 1.5,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "ak74u",
+      "name": "AK-74u",
+      "file": "ak74u_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 19,
+        "range_min_meters": 25
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 769,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 75,
+        "pitch_max_hip": 75
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "damage": 40,
+        "minDamage": 30,
+        "locNeck": 1,
+        "locTorsoUpper": 1,
+        "locTorsoLower": 1,
+        "maxDamageRange": 750,
+        "minDamageRange": 1000
+      },
+      "esl_change_log": [
+        "damage: 50 -> 40",
+        "minDamage: 5 -> 30",
+        "locNeck: 1.4 -> 1",
+        "locTorsoUpper: 1.4 -> 1",
+        "locTorsoLower: 1.2 -> 1",
+        "maxDamageRange: 1 -> 750",
+        "minDamageRange: 1500 -> 1000"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 30,
+      "reload_sec": 2.5,
+      "reload_empty_sec": 3.25,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "glock",
+      "name": "Glock 18",
+      "file": "glock_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 20,
+        "range_full_meters": 8,
+        "range_min_meters": 13
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 1111,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 65,
+        "pitch_max_hip": 65
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 33,
+      "reload_sec": 2.299,
+      "reload_empty_sec": 2.759,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "mp5k",
+      "name": "MP5K",
+      "file": "mp5k_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 45,
+        "min": 20,
+        "range_full_meters": 19,
+        "range_min_meters": 25
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 896,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 70,
+        "pitch_max_hip": 70
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "damage": 45,
+        "penetrateType": "medium"
+      },
+      "esl_change_log": [
+        "damage: 40 -> 45",
+        "penetrateType: small -> medium"
+      ],
+      "rebalance_notes": [
+        "Maximum damage increased from 40 to 45. Penetration power increased from \"small\" to \"medium\"."
+      ],
+      "magazine_capacity": 30,
+      "reload_sec": 2.529,
+      "reload_empty_sec": 3.029,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "p90",
+      "name": "P90",
+      "file": "p90_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 35,
+        "min": 20,
+        "range_full_meters": 19,
+        "range_min_meters": 25
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 938,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "damage": 35
+      },
+      "esl_change_log": [
+        "damage: 30 -> 35"
+      ],
+      "rebalance_notes": [
+        "Maximum damage increased from 30 to 35. No longer has 1.75 sprint duration with extended mags."
+      ],
+      "magazine_capacity": 50,
+      "reload_sec": 2.759,
+      "reload_empty_sec": 3.5,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "pp2000",
+      "name": "PP2000",
+      "file": "pp2000_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 20,
+        "range_full_meters": 13,
+        "range_min_meters": 19
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 800,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 20,
+      "reload_sec": 1.85,
+      "reload_empty_sec": 2.5,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "tmp",
+      "name": "TMP",
+      "file": "tmp_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 20,
+        "range_full_meters": 13,
+        "range_min_meters": 19
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 896,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 45,
+        "pitch_max_hip": 45
+      },
+      "is_meta": true,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [
+        "Increased mag capacity from 15 to 25 (akimbo: 25 to 40). Increased starting ammo capacity from 45 to 75 (akimbo: 45 to 80)."
+      ],
+      "magazine_capacity": 25,
+      "reload_sec": 2.099,
+      "reload_empty_sec": 2.933,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "ump45",
+      "name": "UMP45",
+      "file": "ump45_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 30,
+        "range_full_meters": 15,
+        "range_min_meters": 22
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 667,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 75,
+        "pitch_max_hip": 75
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "minDamage": 30,
+        "penetrateType": "medium",
+        "clipSize": 32,
+        "maxAmmo": 192,
+        "startAmmo": 96
+      },
+      "esl_change_log": [
+        "minDamage: 35 -> 30",
+        "penetrateType: large -> medium",
+        "clipSize: 35 -> 48",
+        "clipSize: 25 -> 32",
+        "maxAmmo: 150 -> 192",
+        "startAmmo: 75 -> 96"
+      ],
+      "rebalance_notes": [
+        "Minimum damage reduced from 35 to 30. Penetration power reduced from \"large\" to \"medium\". Mag size 32 -> 25."
+      ],
+      "magazine_capacity": 32,
+      "reload_sec": 2.5,
+      "reload_empty_sec": 3.029,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "uzi",
+      "name": "UZI",
+      "file": "uzi_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 35,
+        "min": 20,
+        "range_full_meters": 19,
+        "range_min_meters": 25
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 952,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1600,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 60,
+        "pitch_max_hip": 60
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "damage": 35
+      },
+      "esl_change_log": [
+        "damage: 30 -> 35"
+      ],
+      "rebalance_notes": [
+        "Maximum damage increased from 30 to 35."
+      ],
+      "magazine_capacity": 32,
+      "reload_sec": 2.4,
+      "reload_empty_sec": 3.5,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "kriss",
+      "name": "Vector",
+      "file": "kriss_mp",
+      "category": "Submachine Gun",
+      "weapon_class": "smg",
+      "playable": true,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 25,
+        "min": 20,
+        "range_full_meters": 23,
+        "range_min_meters": 30
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 1111,
+      "penetration": "small",
+      "recoil": {
+        "center_speed_ads": 1700,
+        "center_speed_hip": 1700,
+        "pitch_max_ads": 55,
+        "pitch_max_hip": 55
+      },
+      "is_meta": true,
+      "modified_by_esl": true,
+      "esl_changed": {
+        "maxDamageRange": 650,
+        "minDamageRange": 900
+      },
+      "esl_change_log": [
+        "maxDamageRange: 750 -> 900",
+        "minDamageRange: 1000 -> 1200",
+        "maxDamageRange: 500 -> 650",
+        "minDamageRange: 750 -> 900"
+      ],
+      "rebalance_notes": [],
+      "magazine_capacity": 30,
+      "reload_sec": 2.2,
+      "reload_empty_sec": 2.759,
+      "ads_in_sec": 0.2,
+      "ads_out_sec": 0.2,
+      "ads_idle_amount": 2,
+      "ads_idle_speed": 0.9,
+      "ads_move_speed_scale": 2
+    },
+    {
+      "id": "defaultweapon",
+      "name": "defaultweapon",
+      "file": "defaultweapon_mp",
+      "category": "Assault Rifle",
+      "weapon_class": "rifle",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 100,
+        "min": 80,
+        "range_full_meters": 30,
+        "range_min_meters": 56
+      },
+      "multipliers": {
+        "head": 1.4,
+        "helmet": 1.4,
+        "neck": 1.4,
+        "upper_torso": 1.2,
+        "lower_torso": 0.9,
+        "left_arm_upper": 0.8,
+        "right_arm_upper": 0.8,
+        "left_arm_lower": 0.6,
+        "right_arm_lower": 0.6,
+        "left_leg_upper": 0.5,
+        "right_leg_upper": 0.5,
+        "left_leg_lower": 0.4,
+        "right_leg_lower": 0.4
+      },
+      "fire_rate_rpm": 182,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 1200,
+        "center_speed_hip": 1600,
+        "pitch_max_ads": 67,
+        "pitch_max_hip": 70
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 10,
+      "reload_sec": 0.5,
+      "reload_empty_sec": 0.5,
+      "ads_in_sec": 0.3,
+      "ads_out_sec": 0.4,
+      "ads_idle_amount": 21,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "scavenger",
+      "name": "scavenger",
+      "file": "scavenger_bag_mp",
+      "category": "Equipment",
+      "weapon_class": "item",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 30,
+        "min": 30,
+        "range_full_meters": 381,
+        "range_min_meters": 406
+      },
+      "multipliers": {
+        "head": 4,
+        "helmet": 4,
+        "neck": 5,
+        "upper_torso": 1,
+        "lower_torso": 0.9,
+        "left_arm_upper": 0.8,
+        "right_arm_upper": 0.8,
+        "left_arm_lower": 0.6,
+        "right_arm_lower": 0.6,
+        "left_leg_upper": 0.8,
+        "right_leg_upper": 0.8,
+        "left_leg_lower": 0.6,
+        "right_leg_lower": 0.6
+      },
+      "fire_rate_rpm": 600,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2000,
+        "center_speed_hip": 2000,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 40
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 10,
+      "reload_sec": 2,
+      "reload_empty_sec": 2,
+      "ads_in_sec": 0.3,
+      "ads_out_sec": 0.6,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "m79",
+      "name": "M79",
+      "file": "m79_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 135,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 120,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 2.599,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.4,
+      "ads_out_sec": 0.4,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "airdrop",
+      "name": "airdrop",
+      "file": "airdrop_marker_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 15,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 167,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "onemanarmy",
+      "name": "onemanarmy",
+      "file": "onemanarmy_mp",
+      "category": "Grenade",
+      "weapon_class": "grenade",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 135,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 120,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 2.599,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.5,
+      "ads_out_sec": 0.5,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "pavelow",
+      "name": "pavelow",
+      "file": "pavelow_minigun_mp",
+      "category": "Killstreak Turret",
+      "weapon_class": "turret",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 20,
+        "range_full_meters": 51,
+        "range_min_meters": 127
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 1200,
+      "penetration": "large",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 0,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "sentry",
+      "name": "sentry",
+      "file": "sentry_minigun_mp",
+      "category": "Killstreak Turret",
+      "weapon_class": "turret",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 20,
+        "min": 20,
+        "range_full_meters": 30,
+        "range_min_meters": 46
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 1200,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 0,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "cobra",
+      "name": "cobra",
+      "file": "cobra_20mm_mp",
+      "category": "Killstreak Vehicle",
+      "weapon_class": "non-player",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 10,
+        "min": 30,
+        "range_full_meters": 381,
+        "range_min_meters": 406
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 1200,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 0,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "harrier",
+      "name": "harrier",
+      "file": "harrier_20mm_mp",
+      "category": "Killstreak Vehicle",
+      "weapon_class": "non-player",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 40,
+        "min": 35,
+        "range_full_meters": 381,
+        "range_min_meters": 406
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 1200,
+      "penetration": "medium",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 0,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "littlebird",
+      "name": "littlebird",
+      "file": "littlebird_20mm_mp",
+      "category": "Killstreak Vehicle",
+      "weapon_class": "non-player",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 300,
+        "min": 100,
+        "range_full_meters": 381,
+        "range_min_meters": 406
+      },
+      "multipliers": {
+        "head": 1,
+        "helmet": 1,
+        "neck": 1,
+        "upper_torso": 1,
+        "lower_torso": 1
+      },
+      "fire_rate_rpm": 759,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 0,
+        "center_speed_hip": 0,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 0,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 0,
+      "ads_idle_speed": 0,
+      "ads_move_speed_scale": 0
+    },
+    {
+      "id": "ac130",
+      "name": "ac130",
+      "file": "ac130_105mm_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 600,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 10,
+        "center_speed_hip": 10,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 5,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "heli",
+      "name": "heli",
+      "file": "heli_remote_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": null,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 10,
+        "center_speed_hip": 10,
+        "pitch_max_ads": 0,
+        "pitch_max_hip": 0
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 0,
+      "reload_sec": 6,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0,
+      "ads_out_sec": 0,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    },
+    {
+      "id": "remotemissile",
+      "name": "remotemissile",
+      "file": "remotemissile_projectile_mp",
+      "category": "Launcher",
+      "weapon_class": "rocketlauncher",
+      "playable": false,
+      "fire_type": "Full Auto",
+      "damage": {
+        "max": 1000,
+        "min": 0,
+        "range_full_meters": 25400,
+        "range_min_meters": 25400
+      },
+      "multipliers": {},
+      "fire_rate_rpm": 57,
+      "penetration": "none",
+      "recoil": {
+        "center_speed_ads": 2500,
+        "center_speed_hip": 1500,
+        "pitch_max_ads": 95,
+        "pitch_max_hip": 150
+      },
+      "is_meta": false,
+      "modified_by_esl": false,
+      "esl_changed": {},
+      "esl_change_log": [],
+      "rebalance_notes": [],
+      "magazine_capacity": 1,
+      "reload_sec": 2,
+      "reload_empty_sec": 0,
+      "ads_in_sec": 0.8,
+      "ads_out_sec": 0.66,
+      "ads_idle_amount": 25,
+      "ads_idle_speed": 1,
+      "ads_move_speed_scale": 1
+    }
+  ]
+}
