@@ -102,7 +102,7 @@ can be re-imported at any time:
 
 ```
 <file pattern>|<dvar>[,<dvar>]|<value>[|<replace from>][|<keep>]
-cheytac*_mp|adsTransInTime|0.2|0.3,0.4
+cheytac*_mp|adsTransInTime|0.366|0.3,0.4
 ak47*_mp|locHead,locHelmet|1.6|1.4|1
 ```
 
@@ -136,8 +136,8 @@ Current list:
 
 | weapon | dvar | rebalance | ESL |
 |--------|------|-----------|-----|
-| Intervention (`cheytac*_mp`, 21 files) | `adsTransInTime` | `0.3` on the bare weapon, `0.4` on most attachment variants | `0.266` |
-| Intervention (`cheytac*_mp`, 21 files) | `adsTransOutTime` | `0.45` on the bare weapon and FMJ, stock `0.6` on the other 19 | `0.4` (1.5x the in time) |
+| Intervention (`cheytac*_mp`, 21 files) | `adsTransInTime` | `0.3` on the bare weapon, `0.4` on most attachment variants | `0.366` |
+| Intervention (`cheytac*_mp`, 21 files) | `adsTransOutTime` | `0.45` on the bare weapon and FMJ, stock `0.6` on the other 19 | `0.55` (1.5x the in time) |
 | Assault rifles (`ak47`, `m16`, `m4`, `famas`, `scar`, `tavor`, `fal`, `masada`, `fn2000` — 49 files each) | `locHead`, `locHelmet` | `1.4` on the rifle files, `1` on the `*_shotgun_attach_mp` file | `1.6` (the shotgun attachment stays at `1`) |
 | Sniper rifles (`barrett`, `cheytac`, `m21`, `wa2000` — 21 files each, plus the two M40A3 files) | `locHead`, `locHelmet` | `1.5` on the four families; `3` on the M40A3 leftover and `4.5` on the `m40a3_mp` ESL ships | `2` |
 | Intervention (`cheytac*_mp`, 21 files) | `locTorsoLower` | `1.1`, against `1.5` for the upper torso | `1.5` — one torso zone, and lethal |
@@ -158,9 +158,9 @@ Current list:
 | F2000 | `adsViewKickPitchMax`, `hipViewKickPitchMax` | `70` on 47 files, `65` on three | `65` on all of them |
 | M40A3 (`m40a3`, `m40a3_mp`) | `damage`, `minDamage` | `400` on the archive's singleplayer-style leftover, `70` on the `m40a3_mp` ESL ships | `70` on both |
 | M40A3 (`m40a3`, `m40a3_mp`) | `playerDamage` | `220` on the leftover, `30` on the `m40a3_mp` | `30` on both |
-| M40A3 (`m40a3`, `m40a3_mp`) | `adsTransInTime` | `0.4` on the leftover, `0.25` on `m40a3_mp` | `0.233` — a touch faster than the Intervention's `0.266` |
-| M40A3 (`m40a3`, `m40a3_mp`) | `adsTransOutTime` | `0.6` on the leftover, `0.4` on `m40a3_mp` | `0.35` — a touch faster than the Intervention's `0.4` |
-| M40A3 (`m40a3`, `m40a3_mp`) | `adsIdleAmount` | `20` on the leftover, `0` on `m40a3_mp` | `5` — a quarter of the Intervention's `20` |
+| M40A3 (`m40a3`, `m40a3_mp`) | `adsTransInTime` | `0.4` on the leftover, `0.25` on `m40a3_mp` | `0.333` — a touch faster than the Intervention's `0.366` |
+| M40A3 (`m40a3`, `m40a3_mp`) | `adsTransOutTime` | `0.6` on the leftover, `0.4` on `m40a3_mp` | `0.5` — a touch faster than the Intervention's `0.55` |
+| M40A3 (`m40a3`, `m40a3_mp`) | `adsIdleAmount` | `20` on the leftover, `0` on `m40a3_mp` | `10` — half of the Intervention's `20` |
 | M40A3 (`m40a3`, `m40a3_mp`) | `adsIdleSpeed` | `0` on `m40a3_mp`, the leftover already `1.5` | `1.5` — the Intervention's |
 | M40A3 (`m40a3`, `m40a3_mp`) | `locNeck`, `locTorsoUpper` | `2` on the leftover, `4.5` on `m40a3_mp` | `1.5` — the Intervention's value |
 | M40A3 (`m40a3`, `m40a3_mp`) | `locTorsoLower` | `1` on the leftover, `4.5` on `m40a3_mp` | `1.4` — just under the Intervention's `1.5`, so a stomach hit survives |
@@ -170,8 +170,8 @@ Current list:
 `60 / fireTime`: `0.076` = 789 rpm, `0.08` = 750, `0.0851` = 705.
 
 The sniper aim-down-sights times are the play-tested pair rather than the rebalance's:
-the Intervention comes up in `0.266` s and the M40A3 in `0.233` s, each dropping out
-of the scope in 1.5x its in time (`0.4` and `0.35`). The M40A3 is a touch faster on
+the Intervention comes up in `0.366` s and the M40A3 in `0.333` s, each dropping out
+of the scope in 1.5x its in time (`0.55` and `0.5`). The M40A3 is a touch faster on
 purpose — with the damage difference below, that and the sway are what tell the two
 rifles apart.
 
@@ -201,7 +201,7 @@ so adding an ACOG, extended mags, a heartbeat sensor or a thermal scope made it 
 third slower to *aim* and kept the stock `0.6` to drop out of the scope — the
 rebalance's own changes only ever reached the bare weapon and the FMJ variant (and
 its changelog does not mention `adsTransOutTime` at all). One value for each field
-across the whole family keeps the weapon consistent: `0.2` in, and `0.3` out,
+across the whole family keeps the weapon consistent: `0.366` in, and `0.55` out,
 which is 1.5x the in time rather than the flat stock `0.6`.
 
 ### The M40A3 is held to the Intervention
@@ -212,7 +212,7 @@ for it (see "The weapons ESL adds itself"), which multiplies **every** hit locat
 `4.5`. At `damage 70` that is `315` for a hit on an arm or a leg, so the rifle killed
 with one shot anywhere on the body — not the sniper the Intervention is, and not the
 choice the editor means to offer. Damage, multipliers and the aim-down-sights times are
-therefore set to the Intervention's, and the drift of the scope to a quarter of it:
+therefore set to the Intervention's, and the drift of the scope to half of it:
 
 | location | ProMod's `m40a3_mp` | ESL |
 |---|---|---|
@@ -229,27 +229,29 @@ values it replaces:
 ```
 tweaks  : m40a3* locHead,locHelmet = 2  (2/2 file(s) changed, was: locHead=3, locHead=4.5, locHelmet=3, locHelmet=4.5)
 tweaks  : m40a3* damage,minDamage = 70  (1/2 file(s) changed, was: damage=400, damage=70, minDamage=400, minDamage=70)
-tweaks  : m40a3* adsTransInTime = 0.2  (2/2 file(s) changed, was: 0.25, 0.4)
-tweaks  : m40a3* adsTransOutTime = 0.3  (2/2 file(s) changed, was: 0.4, 0.6)
-tweaks  : m40a3* adsIdleAmount = 5  (2/2 file(s) changed, was: 0, 20)
+tweaks  : m40a3* adsTransInTime = 0.333  (2/2 file(s) changed, was: 0.25, 0.4)
+tweaks  : m40a3* adsTransOutTime = 0.5  (2/2 file(s) changed, was: 0.4, 0.6)
+tweaks  : m40a3* adsIdleAmount = 10  (2/2 file(s) changed, was: 0, 20)
 tweaks  : m40a3* adsIdleSpeed = 1.5  (1/2 file(s) changed, was: 0, 1.5)
 tweaks  : m40a3* locTorsoLower = 1.1  (2/2 file(s) changed, was: 1, 4.5)
 ```
 
-The aim-down-sights times are matched as well: `0.2 s` to bring the scope up and `0.3 s`
-to drop out of it, the same pair the sniper block at the top of this file puts on the
-Intervention, so the two snipers come up and go down identically. Nothing in the popup
-reads them — they are here so the two choices in the sniper list feel like the same
+The aim-down-sights times are matched as well, a touch faster: `0.333 s` to bring the
+scope up and `0.5 s` to drop out of it, against the `0.366` / `0.55` the sniper block at
+the top of this file puts on the Intervention — the same 1.5x out time, so the two
+snipers come up and go down in step with the M40A3 a little ahead of it. Nothing in the
+popup reads them — they are here so the two choices in the sniper list feel like the same
 class of weapon.
 
 **Scope sway** is the one place where ESL gives the M40A3 deliberately *less* than the
 Intervention rather than the same. ProMod's file zeroes the aimed idle pair
 (`adsIdleAmount` and `adsIdleSpeed`, both `0`), so a scoped M40A3 held perfectly still
 where the Intervention drifts — invisible at the hip, immediately obvious down a scope.
-ESL gives it a quarter of the Intervention's drift, `20` → `5`, at the Intervention's own
-speed `1.5`: a quarter as far, at exactly the same pace. (A quarter of the speed as well
+ESL gives it half of the Intervention's drift, `20` → `10`, at the Intervention's own
+speed `1.5`: half as far, at exactly the same pace. (A quarter of the speed as well
 — `0.375` — was tried first and reads as a slow sludgy crawl rather than a smaller
-version of the Intervention's drift.)
+version of the Intervention's drift.) The amount sat at `5`, a quarter of the
+Intervention's, for a while; the scope settles less than that now.
 
 That pair is the whole of the sway change: the `adsSway*` scales (`2` max angle, `6` lerp
 speed, `0` pitch / yaw / horiz / vert) are already the Intervention's, and the hip values
@@ -302,7 +304,7 @@ engine had nothing to give (picking the AK-74u handed out an M4).
   `weapons/mp/<name>_mp` and the archive only has the bare `weapons/mp/m40a3`, a
   singleplayer-style leftover with `damage 400` that multiplayer never reads — which is
   why the entry used to hand out an M4. Its damage, its multipliers and its aim times are
-  then held to the Intervention's, and its scope sway to a quarter of the Intervention's,
+  then held to the Intervention's, and its scope sway to half of the Intervention's,
   see "The M40A3 is held to the Intervention" above.
 * The archive therefore carries **1194** weapon files instead of 1192, and the build
   fails if either extra file is not in it.
@@ -529,7 +531,7 @@ what really limits it is the trigger.
 
 **One trap, in the script.** Every value is parsed and printed with the **invariant**
 culture. On a machine whose culture uses `,` as the decimal separator a plain
-`[double]"0.266"` is `266` — a `0.085 s` fire time would come out as 1 round per minute.
+`[double]"0.366"` is `366` — a `0.085 s` fire time would come out as 1 round per minute.
 Anything else that reads a weapon file has to do the same.
 
 ## Verifying

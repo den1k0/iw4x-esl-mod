@@ -34,19 +34,21 @@
 #
 # The rebalance ships 0.3 s in on the weapon itself and 0.4 s on most attachment
 # variants, so taking an ACOG or extended mags made the weapon noticeably slower
-# to aim than the bare one.  ESL sets the whole family to 0.266 s.
+# to aim than the bare one.  ESL sets the whole family to 0.366 s.
 #
 # The out time is a flat 0.6 in the stock data, unrelated to the in time, and the
 # rebalance's 0.6 -> 0.45 only reached the bare weapon and the FMJ variant (its
 # changelog does not mention the field at all) - so extended mags, the variant
 # players actually take, still dropped out of the scope at 0.6.  ESL uses 1.5x
-# the in time for the whole family: 0.266 * 1.5 = 0.4.
+# the in time for the whole family: 0.366 * 1.5 = 0.549, written 0.55.
 #
 # Both numbers are the sniper pair play-tested against the M40A3 rather than the
 # rebalance's own - see the M40A3 section at the end of this file, which is a
-# touch faster on purpose.
-cheytac*_mp|adsTransInTime|0.266|0.3,0.4
-cheytac*_mp|adsTransOutTime|0.4|0.45,0.6
+# touch faster on purpose.  They were 0.266 / 0.4 for a while; the scope is
+# deliberately a little slower than that now, and the out time moved with it so
+# the pair stays at the 1.5x ratio.
+cheytac*_mp|adsTransInTime|0.366|0.3,0.4
+cheytac*_mp|adsTransOutTime|0.55|0.45,0.6
 
 # ACR (masada) rate of fire: 705 rounds per minute.
 #
@@ -363,16 +365,17 @@ kriss*silencer*_mp|minDamageRange|900|750
 #  spread), so each rule lists what it converts from, in both of them.
 #
 #  The aim-down-sights times are the Intervention's pair moved a little faster:
-#  0.233 s in and 0.35 s out against its 0.266 / 0.4.  That is the one place the two
+#  0.333 s in and 0.5 s out against its 0.366 / 0.55.  That is the one place the two
 #  rifles are told apart by feel rather than by damage.
 #
 #  Scope sway is a ProMod decision ESL does not keep.  ProMod leaves the aimed idle
 #  pair at zero (adsIdleAmount and adsIdleSpeed), so a scoped M40A3 holds perfectly
-#  still where the Intervention drifts.  ESL gives it a quarter of the Intervention's
-#  sway amount - 20 becomes 5 - at the Intervention's own speed, 1.5.  The scope
-#  drifts a quarter as far as the Intervention's, at exactly the same pace; a quarter
-#  of the speed as well (0.375) was tried first and read as a slow, sludgy drift
-#  rather than a smaller version of the Intervention's.
+#  still where the Intervention drifts.  ESL gives it half of the Intervention's
+#  sway amount - 20 becomes 10 - at the Intervention's own speed, 1.5.  The scope
+#  drifts half as far as the Intervention's, at exactly the same pace; a quarter of
+#  the speed as well (0.375) was tried first and read as a slow, sludgy drift rather
+#  than a smaller version of the Intervention's.  The amount was 5 (a quarter) for a
+#  while; the scope settles less now than it did.
 #
 #  The adsSway* scales (max angle 2, lerp speed 6, pitch/yaw/horiz/vert 0) are already
 #  the Intervention's, so they need no rule.  The hip pair is left as ProMod has it:
@@ -387,10 +390,10 @@ kriss*silencer*_mp|minDamageRange|900|750
 m40a3*|damage,minDamage|70|400
 m40a3*|playerDamage|30|220
 
-m40a3*|adsTransInTime|0.233|0.25,0.4
-m40a3*|adsTransOutTime|0.35|0.4,0.6
+m40a3*|adsTransInTime|0.333|0.25,0.4
+m40a3*|adsTransOutTime|0.5|0.4,0.6
 
-m40a3*|adsIdleAmount|5|0,20
+m40a3*|adsIdleAmount|10|0,20
 m40a3*|adsIdleSpeed|1.5|0
 
 m40a3*|locNeck|1.5|2,4.5
