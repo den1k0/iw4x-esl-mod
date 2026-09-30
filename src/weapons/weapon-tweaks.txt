@@ -138,9 +138,11 @@ ump45*_mp|startAmmo|96|75|192
 #                        every one of the nine rifles.  The ADS movement change is
 #                        x1.75 (0.38 -> 0.665), so taking any attachment at all put
 #                        the player back to stock movement while aiming.  ESL carries
-#                        the change across the whole family, but at 1.5 rather than
-#                        1.75: 0.38 -> 0.57, so aiming still costs movement, only
-#                        less of it than the rebalance's own value did.
+#                        the change across the whole family, but at 1.316 rather than
+#                        1.75: 0.38 x 1.316 = 0.5001, i.e. 0.5 to every place the game
+#                        or a player can see, so aiming costs movement but a round half
+#                        of the base speed instead of the rebalance's 0.665.  1.316 is
+#                        just 0.5 / 0.38 rounded; it was 1.5 (0.57) before.
 #
 #                        Note the "from" column on the rules below: 1,1.75.  Writing
 #                        1.75 as the *target* meant the two files that already held it
@@ -179,16 +181,16 @@ ump45*_mp|startAmmo|96|75|192
 #  -200 with thermal), so the +100 the rebalance made on the plain files is applied
 #  to all three groups rather than flattening them.
 # -----------------------------------------------------------------------------
-ak47*_mp|adsMoveSpeedScale|1.5|1,1.75
-m16*_mp|adsMoveSpeedScale|1.5|1,1.75
-m4_mp|adsMoveSpeedScale|1.5|1.75
-m4_*_mp|adsMoveSpeedScale|1.5|1,1.75
-famas*_mp|adsMoveSpeedScale|1.5|1,1.75
-scar*_mp|adsMoveSpeedScale|1.5|1,1.75
-tavor*_mp|adsMoveSpeedScale|1.5|1,1.75
-fal*_mp|adsMoveSpeedScale|1.5|1,1.75
-masada*_mp|adsMoveSpeedScale|1.5|1,1.75
-fn2000*_mp|adsMoveSpeedScale|1.5|1,1.75
+ak47*_mp|adsMoveSpeedScale|1.316|1,1.75
+m16*_mp|adsMoveSpeedScale|1.316|1,1.75
+m4_mp|adsMoveSpeedScale|1.316|1.75
+m4_*_mp|adsMoveSpeedScale|1.316|1,1.75
+famas*_mp|adsMoveSpeedScale|1.316|1,1.75
+scar*_mp|adsMoveSpeedScale|1.316|1,1.75
+tavor*_mp|adsMoveSpeedScale|1.316|1,1.75
+fal*_mp|adsMoveSpeedScale|1.316|1,1.75
+masada*_mp|adsMoveSpeedScale|1.316|1,1.75
+fn2000*_mp|adsMoveSpeedScale|1.316|1,1.75
 
 ak47*_mp|penetrateType|large|medium|small
 m16*_mp|penetrateType|large|medium|small

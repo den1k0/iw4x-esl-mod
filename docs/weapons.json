@@ -64,7 +64,7 @@
       "modified_by_esl": true,
       "esl_changed": {
         "fireTime": 0.0851,
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "locHead": 1.6,
         "locHelmet": 1.6
       },
@@ -72,8 +72,8 @@
         "fireTime: 0.076 -> 0.0851",
         "fireTime: 0.080 -> 0.0851",
         "fireTime: 0.08 -> 0.0851",
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
       ],
@@ -87,7 +87,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "ak47",
@@ -121,14 +121,14 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "penetrateType": "large",
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "penetrateType: medium -> large",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
@@ -143,7 +143,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "fn2000",
@@ -177,7 +177,7 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "adsViewKickCenterSpeed": 1400,
         "hipViewKickCenterSpeed": 1400,
         "adsViewKickPitchMax": 65,
@@ -186,8 +186,8 @@
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "adsViewKickCenterSpeed: 1500 -> 1600",
         "hipViewKickCenterSpeed: 1500 -> 1600",
         "adsViewKickCenterSpeed: 1100 -> 1200",
@@ -209,7 +209,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "fal",
@@ -243,13 +243,13 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
       ],
@@ -261,7 +261,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "famas",
@@ -295,14 +295,14 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "penetrateType": "large",
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "penetrateType: medium -> large",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
@@ -317,7 +317,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "m16",
@@ -351,14 +351,14 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "penetrateType": "large",
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "penetrateType: medium -> large",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
@@ -373,7 +373,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "m4",
@@ -407,13 +407,13 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1.75 -> 1.5",
-        "adsMoveSpeedScale: 1 -> 1.5",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
+        "adsMoveSpeedScale: 1 -> 1.316",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
       ],
@@ -425,7 +425,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "scar",
@@ -459,14 +459,14 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "penetrateType": "large",
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "penetrateType: medium -> large",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
@@ -481,7 +481,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "tavor",
@@ -515,14 +515,14 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsMoveSpeedScale": 1.5,
+        "adsMoveSpeedScale": 1.316,
         "penetrateType": "large",
         "locHead": 1.6,
         "locHelmet": 1.6
       },
       "esl_change_log": [
-        "adsMoveSpeedScale: 1 -> 1.5",
-        "adsMoveSpeedScale: 1.75 -> 1.5",
+        "adsMoveSpeedScale: 1 -> 1.316",
+        "adsMoveSpeedScale: 1.75 -> 1.316",
         "penetrateType: medium -> large",
         "locHead: 1.4 -> 1.6",
         "locHelmet: 1.4 -> 1.6"
@@ -537,7 +537,7 @@
       "ads_out_sec": 0.25,
       "ads_idle_amount": 2,
       "ads_idle_speed": 0.8,
-      "ads_move_speed_scale": 1.5
+      "ads_move_speed_scale": 1.316
     },
     {
       "id": "throwingknife",

@@ -40,7 +40,7 @@ Summarised from `third_party\weapon_rebalance\changelog.txt`.
 
 ### Assault rifles
 * All assault rifles: ADS movement speed `0.38` → `0.665`. ESL carries the change
-  across the whole family, but at `0.57` (×1.5) rather than `0.665` (×1.75) — see
+  across the whole family, but at `0.5` (×1.316) rather than `0.665` (×1.75) — see
   "ESL tweaks on top of the rebalance" below.
 * FAMAS, SCAR-H, TAR-21, M16A4, AK-47: penetration `medium` → `large`.
 * ACR: rate of fire `789` → `750`, but only on the bare weapon and the FMJ
@@ -152,7 +152,7 @@ Current list:
 | P90 (`p90*_mp`, 36 files) | `damage` | `35` on the bare weapon, FMJ and the seven extended-mags variants; `30` on the other 25 | `35` on all 36 |
 | Kriss (`kriss*_mp`, 36 files: 27 plain, 9 silenced) | `maxDamageRange`, `minDamageRange` | `750` / `1000` on the plain files, `500` / `750` on the silenced ones — the game's own suppressor penalty | `900` / `1200` (23 m / 30 m) on the plain files, `650` / `900` (17 m / 23 m) silenced — the penalty kept between the two |
 | AK-74u (`ak74u_mp`, the file ESL ships itself) | `maxDamageRange`, `minDamageRange` | `1` / `1500` — ProMod's file, i.e. 2.5 cm of full damage and then a slide all the way to 38 m | `750` / `1000` (19 m / 25 m), the pair the other SMGs use |
-| Assault rifles (`ak47`, `m16`, `m4`, `famas`, `scar`, `tavor`, `fal`, `masada`, `fn2000` — 50 files each) | `adsMoveSpeedScale` | `1.75` on the bare file and the FMJ variant only, `1` on the other 48 — the ADS movement buff (`0.38` → `0.665` is ×1.75) was gone as soon as any attachment was taken | `1.5` on all of them, i.e. `0.38` → `0.57`: aiming still costs movement, less of it than the rebalance's ×1.75 did. The M4 uses the `m4_*_mp` pattern so it does not swallow the M40A3, which keeps `1` |
+| Assault rifles (`ak47`, `m16`, `m4`, `famas`, `scar`, `tavor`, `fal`, `masada`, `fn2000` — 50 files each) | `adsMoveSpeedScale` | `1.75` on the bare file and the FMJ variant only, `1` on the other 48 — the ADS movement buff (`0.38` → `0.665` is ×1.75) was gone as soon as any attachment was taken | `1.316` on all of them, i.e. `0.38` → `0.5` (`0.38 × 1.316 = 0.5001`, so `0.5` to every place a player can see): aiming costs movement, but half of the base speed rather than the rebalance's `0.665`. The M4 uses the `m4_*_mp` pattern so it does not swallow the M40A3, which keeps `1` |
 | AK-47, M16A4, FAMAS, SCAR-H, TAR-21 | `penetrateType` | `large` on the bare file, FMJ and — on the AK, where the holographic sight always gave it — the seven `eotech` variants; `medium` on the other 39–47 | `large` on all of them, the underbarrel shotgun attachment stays `small` |
 | F2000 | `adsViewKickCenterSpeed`, `hipViewKickCenterSpeed` | `1600` on the bare file and FMJ against `1500` on the rest, and the scoped groups keep their own offsets | `1600` plain, `1400` thermal, `1200` ACOG — the +100 on all three groups |
 | F2000 | `adsViewKickPitchMax`, `hipViewKickPitchMax` | `70` on 47 files, `65` on three | `65` on all of them |
