@@ -34,21 +34,25 @@
 #
 # The rebalance ships 0.3 s in on the weapon itself and 0.4 s on most attachment
 # variants, so taking an ACOG or extended mags made the weapon noticeably slower
-# to aim than the bare one.  ESL sets the whole family to 0.366 s.
+# to aim than the bare one.  ESL sets the whole family to 0.3 s: the bare
+# weapon's own value, with the variant files brought down to it, rather than the
+# family moved off it.
 #
 # The out time is a flat 0.6 in the stock data, unrelated to the in time, and the
 # rebalance's 0.6 -> 0.45 only reached the bare weapon and the FMJ variant (its
 # changelog does not mention the field at all) - so extended mags, the variant
 # players actually take, still dropped out of the scope at 0.6.  ESL uses 1.5x
-# the in time for the whole family: 0.366 * 1.5 = 0.549, written 0.55.
+# the in time for the whole family: 0.3 * 1.5 = 0.45, which is the bare weapon's
+# own out time as well.
 #
-# Both numbers are the sniper pair play-tested against the M40A3 rather than the
-# rebalance's own - see the M40A3 section at the end of this file, which is a
-# touch faster on purpose.  They were 0.266 / 0.4 for a while; the scope is
-# deliberately a little slower than that now, and the out time moved with it so
-# the pair stays at the 1.5x ratio.
-cheytac*_mp|adsTransInTime|0.366|0.3,0.4
-cheytac*_mp|adsTransOutTime|0.55|0.45,0.6
+# Note the "from" column on the two rules below: only 0.4 and 0.6.  The target is
+# now a value the family already holds, so there is nothing to convert in the
+# bare file - 0.3 and 0.45 are simply already right.  The pair has been
+# 0.266 / 0.4 and 0.366 / 0.55 on the way here, each time with the out time moved
+# to keep the 1.5x ratio.  See the M40A3 section at the end of this file, which
+# stays a touch faster on purpose.
+cheytac*_mp|adsTransInTime|0.3|0.4
+cheytac*_mp|adsTransOutTime|0.45|0.6
 
 # ACR (masada) rate of fire: 705 rounds per minute.
 #
@@ -262,23 +266,31 @@ m40a3*|locHead,locHelmet|2|3,4.5
 #
 # Only the Intervention needs a rule here - the M40A3 has its own further down,
 # because its files start from 1 and 4.5 rather than from 1.1, and it is set to
-# 1.4 there rather than to the Intervention's 1.5: 98 damage, so a lower-torso hit
-# that the Intervention kills with is survivable against the M40A3.
+# 1.1 there rather than to the Intervention's 1.5: 77 damage, so a lower-torso hit
+# that the Intervention kills with is nowhere near lethal against the M40A3.
 cheytac*_mp|locTorsoLower|1.5|1.1
 
-# Pistols -> 2.  The golden Desert Eagle is one of these files - its asset name is
-# "deserteaglegold", which starts with "deserteagle" - so it gets its own rule, and
-# that rule has to come FIRST: both of them convert the same 1.4, and a rule whose
-# work a later one undid is exactly what the build refuses to ship.
+# Pistols -> 2.  The golden Desert Eagle is one of these files: its asset name is
+# "deserteaglegold", which starts with "deserteagle", so the one rule covers both.
+# It used to need its own rule, ordered FIRST of the two, because both converted
+# the same 1.4 and a rule whose work a later one undid is exactly what the build
+# refuses to ship.
 #
-# The golden one is 3.33, i.e. 100 / 30: 50 x 3.33 is 166 up close and 30 x 3.33 is
-# 99.9 at the far end of the damage curve, which is the golden's whole point - a head
-# shot anywhere.  The .9 is worth knowing about if a long-range headshot is ever seen
-# to survive: 3.34 is the number that makes it 100.2 and unambiguous.
-deserteaglegold*_mp|locHead,locHelmet|3.33|1.4
-
-deserteagle*_mp|locHead,locHelmet|2|1.4|3.33
+# That rule is gone.  The golden was 3.33 (100 / 30: 50 x 3.33 is 166 up close and
+# 30 x 3.33 is 99.9 at the far end of the curve, so a head shot anywhere) and is
+# now the plain pistol's 2.  The 3.33 the plain rule used to keep went with it:
+# nothing holds that value any more, so the plain rule converts the golden exactly
+# like the other six files, which is the point.  A rule left behind that changed
+# nothing would fail the build anyway.
+#
+# The golden keeps one thing of its own, and it is not damage: it settles 50
+# sooner than the plain pistol, 1250 against 1200, so it kicks and recovers less.
+# Both fields move together because the game reads the ads one while aiming and the
+# hip one from the hip - the rebalance is what raised that pair from 600 to 1200.
+deserteagle*_mp|locHead,locHelmet|2|1.4
 coltanaconda*_mp|locHead,locHelmet|2|1.4
+
+deserteaglegold*_mp|adsViewKickCenterSpeed,hipViewKickCenterSpeed|1250|1200
 
 # -----------------------------------------------------------------------------
 #  The AK-74u (SMG)
@@ -360,24 +372,27 @@ kriss*silencer*_mp|minDamageRange|900|750
 #  location by 4.5, and 70 damage at 4.5 is 315, so a hit on an arm or a leg killed
 #  just as surely as a headshot.  The Intervention uses 2 head, 1.5 neck, 1.5 for
 #  both torso zones and 1 everywhere else; the rules below set the same, except for
-#  the lower torso, which stays just under it (1.4 against 1.5) - 98 damage, so the
-#  M40A3 is the one sniper that does not kill a stomach hit.
+#  the lower torso, which goes well under it (1.1 against 1.5) - 77 damage, so the
+#  M40A3 is the one sniper that does not kill a stomach hit, and not close to it.
 #
 #  The two files do not start from the same numbers (the leftover is a "3 / 2 / 1"
 #  spread), so each rule lists what it converts from, in both of them.
 #
 #  The aim-down-sights times are the Intervention's pair moved a little faster:
-#  0.333 s in and 0.5 s out against its 0.366 / 0.55.  That is the one place the two
-#  rifles are told apart by feel rather than by damage.
+#  0.25 s in and 0.375 s out against its 0.3 / 0.45, the same 1.5x out time.  That
+#  is the one place the two rifles are told apart by feel rather than by damage.
+#  The 0.25 is this file's own value rather than a number ESL invented, so only the
+#  leftover's 0.4 has to be brought down to it.
 #
 #  Scope sway is a ProMod decision ESL does not keep.  ProMod leaves the aimed idle
 #  pair at zero (adsIdleAmount and adsIdleSpeed), so a scoped M40A3 holds perfectly
-#  still where the Intervention drifts.  ESL gives it half of the Intervention's
-#  sway amount - 20 becomes 10 - at the Intervention's own speed, 1.5.  The scope
-#  drifts half as far as the Intervention's, at exactly the same pace; a quarter of
-#  the speed as well (0.375) was tried first and read as a slow, sludgy drift rather
-#  than a smaller version of the Intervention's.  The amount was 5 (a quarter) for a
-#  while; the scope settles less now than it did.
+#  still where the Intervention drifts.  ESL gives it *more* of that drift than the
+#  Intervention, not less: 20 becomes 30, half as much again, at the Intervention's
+#  own speed 1.5.  It is the rifle's one edge - this is the sniper that does not
+#  kill a stomach hit - and it is the reverse of what the earlier passes did (5,
+#  then 10, both of them calmer than the Intervention).  A quarter of the speed as
+#  well (0.375) was tried along the way and read as a slow, sludgy drift rather than
+#  a smaller version of the Intervention's.
 #
 #  The adsSway* scales (max angle 2, lerp speed 6, pitch/yaw/horiz/vert 0) are already
 #  the Intervention's, so they need no rule.  The hip pair is left as ProMod has it:
@@ -392,13 +407,13 @@ kriss*silencer*_mp|minDamageRange|900|750
 m40a3*|damage,minDamage|70|400
 m40a3*|playerDamage|30|220
 
-m40a3*|adsTransInTime|0.333|0.25,0.4
-m40a3*|adsTransOutTime|0.5|0.4,0.6
+m40a3*|adsTransInTime|0.25|0.4
+m40a3*|adsTransOutTime|0.375|0.4,0.6
 
-m40a3*|adsIdleAmount|10|0,20
+m40a3*|adsIdleAmount|30|0,20
 m40a3*|adsIdleSpeed|1.5|0
 
 m40a3*|locNeck|1.5|2,4.5
 m40a3*|locTorsoUpper|1.5|2,4.5
-m40a3*|locTorsoLower|1.4|1,4.5
+m40a3*|locTorsoLower|1.1|1,4.5
 m40a3*|locRightArmUpper,locLeftArmUpper,locRightLegUpper,locLeftLegUpper|1|4.5

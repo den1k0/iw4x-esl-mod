@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-30",
+  "last_updated": "2026-10-11",
   "mod": {
     "name": "ESL-MOD",
     "version": "1.0",
@@ -870,8 +870,8 @@
         "range_min_meters": 30
       },
       "multipliers": {
-        "head": 3.33,
-        "helmet": 3.33,
+        "head": 2,
+        "helmet": 2,
         "neck": 1,
         "upper_torso": 1,
         "lower_torso": 1
@@ -879,20 +879,24 @@
       "fire_rate_rpm": 759,
       "penetration": "medium",
       "recoil": {
-        "center_speed_ads": 1200,
-        "center_speed_hip": 1200,
+        "center_speed_ads": 1250,
+        "center_speed_hip": 1250,
         "pitch_max_ads": 80,
         "pitch_max_hip": 80
       },
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "locHead": 3.33,
-        "locHelmet": 3.33
+        "locHead": 2,
+        "locHelmet": 2,
+        "adsViewKickCenterSpeed": 1250,
+        "hipViewKickCenterSpeed": 1250
       },
       "esl_change_log": [
-        "locHead: 1.4 -> 3.33",
-        "locHelmet: 1.4 -> 3.33"
+        "locHead: 1.4 -> 2",
+        "locHelmet: 1.4 -> 2",
+        "adsViewKickCenterSpeed: 1200 -> 1250",
+        "hipViewKickCenterSpeed: 1200 -> 1250"
       ],
       "rebalance_notes": [],
       "magazine_capacity": 7,
@@ -1839,17 +1843,15 @@
       "is_meta": true,
       "modified_by_esl": true,
       "esl_changed": {
-        "adsTransInTime": 0.366,
-        "adsTransOutTime": 0.55,
+        "adsTransInTime": 0.3,
+        "adsTransOutTime": 0.45,
         "locHead": 2,
         "locHelmet": 2,
         "locTorsoLower": 1.5
       },
       "esl_change_log": [
-        "adsTransInTime: 0.4 -> 0.366",
-        "adsTransInTime: 0.3 -> 0.366",
-        "adsTransOutTime: 0.6 -> 0.55",
-        "adsTransOutTime: 0.45 -> 0.55",
+        "adsTransInTime: 0.4 -> 0.3",
+        "adsTransOutTime: 0.6 -> 0.45",
         "locHead: 1.5 -> 2",
         "locHelmet: 1.5 -> 2",
         "locTorsoLower: 1.1 -> 1.5"
@@ -1860,8 +1862,8 @@
       "magazine_capacity": 5,
       "reload_sec": 2.267,
       "reload_empty_sec": 3.867,
-      "ads_in_sec": 0.366,
-      "ads_out_sec": 0.55,
+      "ads_in_sec": 0.3,
+      "ads_out_sec": 0.45,
       "ads_idle_amount": 20,
       "ads_idle_speed": 1.5,
       "ads_move_speed_scale": 1
@@ -1936,7 +1938,7 @@
         "helmet": 2,
         "neck": 1.5,
         "upper_torso": 1.5,
-        "lower_torso": 1.4
+        "lower_torso": 1.1
       },
       "fire_rate_rpm": 60,
       "penetration": "large",
@@ -1954,13 +1956,13 @@
         "damage": 70,
         "minDamage": 70,
         "playerDamage": 30,
-        "adsTransInTime": 0.333,
-        "adsTransOutTime": 0.5,
-        "adsIdleAmount": 10,
+        "adsTransInTime": 0.25,
+        "adsTransOutTime": 0.375,
+        "adsIdleAmount": 30,
         "adsIdleSpeed": 1.5,
         "locNeck": 1.5,
         "locTorsoUpper": 1.5,
-        "locTorsoLower": 1.4,
+        "locTorsoLower": 1.1,
         "locRightArmUpper": 1,
         "locLeftArmUpper": 1,
         "locRightLegUpper": 1,
@@ -1974,19 +1976,18 @@
         "damage: 400 -> 70",
         "minDamage: 400 -> 70",
         "playerDamage: 220 -> 30",
-        "adsTransInTime: 0.4 -> 0.333",
-        "adsTransInTime: 0.25 -> 0.333",
-        "adsTransOutTime: 0.6 -> 0.5",
-        "adsTransOutTime: 0.4 -> 0.5",
-        "adsIdleAmount: 20 -> 10",
-        "adsIdleAmount: 0 -> 10",
+        "adsTransInTime: 0.4 -> 0.25",
+        "adsTransOutTime: 0.6 -> 0.375",
+        "adsTransOutTime: 0.4 -> 0.375",
+        "adsIdleAmount: 20 -> 30",
+        "adsIdleAmount: 0 -> 30",
         "adsIdleSpeed: 0 -> 1.5",
         "locNeck: 2 -> 1.5",
         "locNeck: 4.5 -> 1.5",
         "locTorsoUpper: 2 -> 1.5",
         "locTorsoUpper: 4.5 -> 1.5",
-        "locTorsoLower: 1 -> 1.4",
-        "locTorsoLower: 4.5 -> 1.4",
+        "locTorsoLower: 1 -> 1.1",
+        "locTorsoLower: 4.5 -> 1.1",
         "locRightArmUpper: 4.5 -> 1",
         "locLeftArmUpper: 4.5 -> 1",
         "locRightLegUpper: 4.5 -> 1",
@@ -1996,9 +1997,9 @@
       "magazine_capacity": 5,
       "reload_sec": 0.43333,
       "reload_empty_sec": 0.15,
-      "ads_in_sec": 0.333,
-      "ads_out_sec": 0.5,
-      "ads_idle_amount": 10,
+      "ads_in_sec": 0.25,
+      "ads_out_sec": 0.375,
+      "ads_idle_amount": 30,
       "ads_idle_speed": 1.5,
       "ads_move_speed_scale": 1
     },
